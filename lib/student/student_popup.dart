@@ -74,14 +74,7 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(
-                        "Click Here",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                      ),
+                      
                     ],
                   ),
                 ),
@@ -118,14 +111,7 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(
-                        "Click Here",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                      ),
+                      
                     ],
                   ),
                 ),
@@ -199,14 +185,7 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(
-                        "Click Here",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                      ),
+                      
                     ],
                   ),
                 ),
@@ -243,14 +222,7 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(
-                        "Click Here",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                      ),
+                      
                     ],
                   ),
                 ),
@@ -287,14 +259,7 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      Text(
-                        "Click Here",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                      ),
+                      
                     ],
                   ),
                 ),
