@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/exam/exam_home/exam_main.dart';
 import 'package:flutter_application_1/student/pages/exam/subject_one/content_model.dart';
 import 'package:flutter_application_1/student/pages/exam/subject_one/practice_quiz_screen.dart';
+import 'package:flutter_application_1/student/pages/exam/subject_three/practice_quiz_screen.dart';
 
-class OnbordingOne extends StatefulWidget {
+class OnbordingThree extends StatefulWidget {
 final String user;
-OnbordingOne({required this.user});
+OnbordingThree({required this.user});
   @override
   _OnbordingState createState() => _OnbordingState();
 }
 
-class _OnbordingState extends State<OnbordingOne> {
+class _OnbordingState extends State<OnbordingThree> {
   late String user;
 
   int currentIndex = 0;
@@ -107,7 +108,7 @@ class _OnbordingState extends State<OnbordingOne> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => QuizScreenOne(),
+                      builder: (_) => QuizScreenThree(),
                     ),
                   );
                 }

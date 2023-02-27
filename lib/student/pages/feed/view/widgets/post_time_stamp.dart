@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
 import 'package:flutter_application_1/student/pages/feed/view/presentation/themes.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/inherited_widgets/inherited_post_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,9 +32,8 @@ class PostTimeStamp extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Container(
-      width: double.infinity,
-      alignment: alignment,
+          return Padding(
+      padding: EdgeInsets.fromLTRB(20.0,0,0,0),
       child: Text(data['postTime'], style: timeTheme),
     );
         }

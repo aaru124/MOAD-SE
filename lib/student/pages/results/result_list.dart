@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/results/Year/First_Year/sem_one_result.dart';
 import 'package:flutter_application_1/student/pages/results/Year/Third_Year/sem_six_result.dart';
+import 'package:flutter_application_1/student/pages/results/result_year.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../student_main.dart';
@@ -65,7 +66,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemOneResult(user: user,)))),
+                                      builder: (context) => ResultYear(user: user,sem: "1",)))),
                           SizedBox(
                             height: 25,
                           ),
@@ -77,7 +78,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemTwoResult(user:user)))),
+                                      builder: (context) => ResultYear(user:user,sem:"2")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -109,7 +110,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemThreeResult(user:user)))),
+                                      builder: (context) => ResultYear(user:user,sem:"3")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -121,7 +122,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemFourResult(user:user)))),
+                                      builder: (context) => ResultYear(user:user,sem:"4")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -153,7 +154,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemFiveResult(user:user)))),
+                                      builder: (context) => ResultYear(user:user,sem: "5",)))),
                           SizedBox(
                             height: 25,
                           ),
@@ -165,7 +166,7 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SemSixResult(user:user)))),
+                                      builder: (context) => ResultYear(user:user,sem: "6",)))),
                           SizedBox(
                             height: 25,
                           ),

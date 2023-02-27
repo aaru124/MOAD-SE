@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/user_details.dart';
 
 /*class UserDetailsWithFollowKeys {

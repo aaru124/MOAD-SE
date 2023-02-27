@@ -114,7 +114,7 @@ class _QuizScreenOneState extends State<QuizScreenOne> {
 
   _nextButton() {
     bool isLastQuestion = false;
-    if (currentQuestionIndex == questionList.length - 1) {
+    if (currentQuestionIndex == questionList.length-1 ) {
       isLastQuestion = true;
     }
 

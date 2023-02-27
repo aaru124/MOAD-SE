@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_five.dart';
+import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_four.dart';
 import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_one_main.dart';
+import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_six.dart';
+import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_three.dart';
 import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_two.dart';
 
 import 'package:flutter_application_1/student/student_main.dart';
@@ -138,7 +142,12 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                 ),
               ),
               ),
-              Container(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SubjectThree(user:user)));
+                },
+                child:Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -187,7 +196,14 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                   ],
                 ),
               ),
-              Container(
+              ),
+
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SubjectFour(user:user)));
+                },
+                child:Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -236,7 +252,13 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                   ],
                 ),
               ),
-              Container(
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SubjectFive(user:user)));
+                },
+                child:Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -285,7 +307,13 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                   ],
                 ),
               ),
-              Container(
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SubjectSix(user:user)));
+                },
+                child:Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -333,6 +361,7 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                     ),
                   ],
                 ),
+              ),
               ),
             ],
           ),

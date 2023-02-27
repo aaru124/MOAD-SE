@@ -27,8 +27,8 @@ List<Company> companyList = [
   Company(
     companyName: "Nike",
     job: "Senior UI Designer",
-    city: "California, CA",
-    sallary: "\$50K - \$90K",
+    city: "Mumbai, Maharashtra",
+    sallary: "Rs.15 LPA - Rs.20 LPA",
     image: "assets/nike-Logo.png",
     tag: [
       "Full Time",
@@ -49,8 +49,8 @@ List<Company> companyList = [
   Company(
     companyName: "Uber",
     job: "Machine Learning Advance",
-    city: "Jakarta, Indonesia",
-    sallary: "\$30K - \$50K",
+    city: "Bangalore, Karnataka",
+    sallary: "Rs.10 LPA - Rs.15 LPA",
     image: "assets/uber-logo-redesign_1x.png",
     tag: [
       "Full Time",
@@ -71,8 +71,8 @@ List<Company> companyList = [
   Company(
     companyName: "Sound Cloud",
     job: "Senior Data Engineer",
-    city: "Washington, DC",
-    sallary: "\$45K - \$78K",
+    city: "Gurugram, Haryana",
+    sallary: "Rs.12 LPA - Rs.15 LPA",
     image: "assets/soundcloud-icon.png",
     tag: [
       "Full Time",
@@ -93,8 +93,8 @@ List<Company> companyList = [
   Company(
     companyName: "YouTube",
     job: "Data Analyst",
-    city: "New York, USA",
-    sallary: "\$45K - \$78K",
+    city: "New Delhi, Delhi",
+    sallary: "Rs.14 LPA - Rs.18 LPA",
     image:
         "assets/youtube-black-icon-youtube-icon-youtube-logo-youtube-png-and-black-youtube-logo-640_640.png",
     tag: [
@@ -116,8 +116,8 @@ List<Company> companyList = [
   Company(
     companyName: "Apple.inc",
     job: "System Safety Engineer",
-    city: "Silicon Valley, USA",
-    sallary: "\$45K - \$78K",
+    city: "Bangalore, Karnataka",
+    sallary: "Rs.20 LPA - Rs.25 LPA",
     image: "assets/download.png",
     tag: [
       "Full Time",
@@ -138,8 +138,8 @@ List<Company> companyList = [
   Company(
     companyName: "Monobank",
     job: "Senior Full-Stack Engineer",
-    city: "Kuala Lumpur, Malaysia",
-    sallary: "\$45K - \$78K",
+    city: "Chennai, Tamil Nadu",
+    sallary: "Rs.9 LPA - Rs.12 LPA",
     image: "assets/mb4.jpg",
     tag: [
       "Full Time",
@@ -163,8 +163,8 @@ List<Company> recentList = [
   Company(
     companyName: "Sound Cloud",
     job: "Senior Data Engineer",
-    city: "Washington, DC",
-    sallary: "\$45K - \$78K",
+    city: "Gurugram, Haryana",
+    sallary: "Rs.12 LPA - Rs.15 LPA",
     image: "assets/soundcloud-icon.png",
     tag: [
       "Full Time",
@@ -185,8 +185,8 @@ List<Company> recentList = [
   Company(
     companyName: "Monobank",
     job: "Senior Full-Stack Engineer",
-    city: "Kuala Lumpur, Malaysia",
-    sallary: "\$45K - \$78K",
+    city: "Chennai, Tamil Nadu",
+    sallary: "Rs.9 LPA - Rs.12 LPA",
     image: "assets/mb4.jpg",
     tag: [
       "Full Time",
@@ -207,8 +207,8 @@ List<Company> recentList = [
   Company(
     companyName: "Uber",
     job: "Machine Learning Advance",
-    city: "Jakarta, Indonesia",
-    sallary: "\$30K - \$50K",
+    city: "Bangalore, Karnataka",
+    sallary: "Rs.10 LPA - Rs.15 LPA",
     image: "assets/uber-logo-redesign_1x.png",
     tag: [
       "Full Time",
@@ -229,8 +229,8 @@ List<Company> recentList = [
   Company(
     companyName: "Apple.inc",
     job: "System Safety Engineer",
-    city: "Silicon Valley, USA",
-    sallary: "\$45K - \$78K",
+    city: "Bangalore, Karnataka",
+    sallary: "Rs.20 LPA - Rs.25 LPA",
     image: "assets/download.png",
     tag: [
       "Full Time",

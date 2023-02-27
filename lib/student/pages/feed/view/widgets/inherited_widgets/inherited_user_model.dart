@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
 
 class InheritedUserModel extends InheritedWidget {
   final String userData;

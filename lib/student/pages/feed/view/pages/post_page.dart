@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
 import 'package:flutter_application_1/student/pages/feed/view/presentation/themes.dart';
-import 'package:flutter_application_1/student/pages/feed/view/widgets/comments_list.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/inherited_widgets/inherited_post_model.dart';
-import 'package:flutter_application_1/student/pages/feed/view/widgets/post_stats.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/post_time_stamp.dart';
 //import 'package:flutter_application_1/student/pages/feed/view/widgets/user_details_with_follow.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -67,6 +65,7 @@ const _NonImageContents({super.key});
         children: <Widget>[
           _Summary(key: PostPageKeys.summary),
           PostTimeStamp(),
+          SizedBox(height: 40.0,),
           _MainBody(key: PostPageKeys.mainBody),
           /*UserDetailsWithFollow(
             userData: data['author'],
@@ -120,7 +119,7 @@ class _Summary extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
           return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.all(20.0),
       child: Text(
         data['summary'],
         style: TextThemes.title,
@@ -155,7 +154,7 @@ class _MainBody extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
           return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.all(20),
       child: Text(
         data['body'],
         style: TextThemes.body1,

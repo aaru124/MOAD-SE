@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/feed/helper/common.dart';
-import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/inherited_widgets/inherited_user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 class UserDetails extends StatelessWidget {

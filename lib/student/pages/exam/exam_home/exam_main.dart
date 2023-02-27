@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/attendance/subjects/subject_one/subject_one_main.dart';
 import 'package:flutter_application_1/student/pages/exam/subject_one/practice_quiz_screen.dart';
+import 'package:flutter_application_1/student/pages/exam/subject_three/tutorial.dart';
+import 'package:flutter_application_1/student/pages/exam/subject_two/tutorial.dart';
 
 import 'package:flutter_application_1/student/student_main.dart';
 
@@ -37,7 +39,7 @@ class _ExamMainState extends State<ExamMain> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OnbordingOne()));
+                      MaterialPageRoute(builder: (context) => OnbordingOne(user:user)));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
@@ -59,16 +61,16 @@ class _ExamMainState extends State<ExamMain> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Web Designing",
+                            "Mobile Application Development",
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 24,
+                              fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Lydia",
+                            "Prof. Lydia Fernandes",
                             style: TextStyle(
                               color: Colors.white.withOpacity(0.75),
                               fontWeight: FontWeight.w500,
@@ -86,7 +88,12 @@ class _ExamMainState extends State<ExamMain> {
                   ),
                 ),
               ),
-              Container(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OnbordingTwo(user:user)));
+                },
+                child:Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
                 margin: const EdgeInsets.only(bottom: 16),
@@ -109,16 +116,16 @@ class _ExamMainState extends State<ExamMain> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Web",
+                          "Software Engineering",
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "Lydia",
+                          "Prof. Lydia Fernandes",
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.75),
                             fontWeight: FontWeight.w500,
@@ -135,6 +142,13 @@ class _ExamMainState extends State<ExamMain> {
                   ],
                 ),
               ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OnbordingThree(user:user)));
+                },
+                child:
               Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 height: 120,
@@ -159,16 +173,16 @@ class _ExamMainState extends State<ExamMain> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Web",
+                          "Modern Operating System",
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "Lydia",
+                          "Prof. Aaron Johns",
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.75),
                             fontWeight: FontWeight.w500,
@@ -184,6 +198,7 @@ class _ExamMainState extends State<ExamMain> {
                     ),
                   ],
                 ),
+              ),
               ),
             ],
           ),

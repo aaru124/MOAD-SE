@@ -130,7 +130,7 @@ final FirebaseAuth auth = FirebaseAuth.instance;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        iconTheme: IconThemeData(color: Colors.red),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [
           SizedBox(
              height:10, //height of button

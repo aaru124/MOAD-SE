@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/results/result_list.dart';
 import 'package:flutter_application_1/student/student_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Fee extends StatefulWidget {
   final String user;
@@ -19,6 +20,23 @@ class _Fee extends State<Fee> {
   }
   @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('fee');
+    
+    return FutureBuilder<DocumentSnapshot>(
+      future: users.doc('fee-details').get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done ) {
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -118,45 +136,33 @@ class _Fee extends State<Fee> {
                 ],
                 rows: [
                   DataRow(cells: [
-                    DataCell(Text('1')),
-                    DataCell(Text('215000')),
-                    DataCell(Text('Test')),
-                    DataCell(Text('BSCIT')),
-                    DataCell(Text('0000')),
-                    DataCell(Text('00-00-0000')),
-                    DataCell(Text('Paid')),
+                    DataCell(Text('${data['1']['srno']}')),
+                    DataCell(Text('${data['1']['uid']}')),
+                    DataCell(Text('${data['1']['name']}')),
+                    DataCell(Text('${data['1']['pgm']}')),
+                    DataCell(Text('Rs.${data['1']['amount']}')),
+                    DataCell(Text('${data['1']['date']}')),
+                    DataCell(Text('${data['1']['status']}')),
                   ]),
-                  DataRow(cells: [
-                    DataCell(Text('2')),
-                    DataCell(Text('215000')),
-                    DataCell(Text('Test')),
-                    DataCell(Text('BSCIT')),
-                    DataCell(Text('0000')),
-                    DataCell(Text('00-00-0000')),
-                    DataCell(Text('Paid')),
+                   DataRow(cells: [
+                    DataCell(Text('${data['2']['srno']}')),
+                    DataCell(Text('${data['2']['uid']}')),
+                    DataCell(Text('${data['2']['name']}')),
+                    DataCell(Text('${data['2']['pgm']}')),
+                    DataCell(Text('Rs.${data['2']['amount']}')),
+                    DataCell(Text('${data['2']['date']}')),
+                    DataCell(Text('${data['2']['status']}')),
                   ]),
-                  DataRow(cells: [
-                    DataCell(Text('3')),
-                    DataCell(Text('215000')),
-                    DataCell(Text('Test')),
-                    DataCell(Text('BSCIT')),
-                    DataCell(Text('0000')),
-                    DataCell(Text('00-00-0000')),
-                    DataCell(Text('Paid')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('4')),
-                    DataCell(Text('215000')),
-                    DataCell(Text('Test')),
-                    DataCell(Text('BSCIT')),
-                    DataCell(Text('0000')),
-                    DataCell(Text('00-00-0000')),
-                    DataCell(Text('Paid')),
-                  ]),
+                  
+                  
                 ],
               ),
             ),
           ])),
+    );
+        }
+        return CircularProgressIndicator();
+          },
     );
   }
 }

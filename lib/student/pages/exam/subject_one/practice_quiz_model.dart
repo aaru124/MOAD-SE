@@ -17,40 +17,42 @@ List<Question> getQuestions() {
   //ADD questions and answer here
 
   list.add(Question(
-    "Who is the owner of Flutter?",
+    "A widget that allows us to refresh the screen is called a ___.",
     [
-      Answer("Nokia", false),
-      Answer("Samsung", false),
-      Answer("Google", true),
-      Answer("Apple", false),
+      Answer("Stateless widgets", false),
+      Answer("Stateful widget", true),
+      Answer("Statebuild widget", false),
+      Answer("All of the above", false),
     ],
   ));
 
   list.add(Question(
-    "Who owns Iphone?",
+    "pubspec.yaml file does not contain?",
     [
-      Answer("Apple", true),
-      Answer("Microsoft", false),
-      Answer("Google", false),
-      Answer("Nokia", false),
+      Answer("Project general settings", false),
+      Answer("Project dependencies", false),
+      Answer("Project language", true),
+      Answer("Project assets", false),
     ],
   ));
 
   list.add(Question(
-    "Youtube is _________  platform?",
+    "Which of the following takes more time to compile and update the app?",
     [
-      Answer("Music Sharing", false),
-      Answer("Video Sharing", false),
-      Answer("Live Streaming", false),
-      Answer("All of the above", true),
+      Answer("Hot Reload", false),
+      Answer("Hot Restart", true),
+      Answer("Cold Reload", false),
+      Answer("Depends on the Compiler", false),
     ],
   ));
 
   list.add(Question(
-    "Flutter user dart as a language?",
+    "... component allow us to specify the distance between widgets on the screen.",
     [
-      Answer("True", true),
-      Answer("False", false),
+      Answer("Table", false),
+      Answer("AppBar", false),
+      Answer("SafeArea", false),
+      Answer("SizedBox", true),
     ],
   ));
 

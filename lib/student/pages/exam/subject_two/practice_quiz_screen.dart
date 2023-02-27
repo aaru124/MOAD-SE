@@ -16,18 +16,19 @@ class _QuizScreenTwoState extends State<QuizScreenTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 5, 50, 80),
+      
       body: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFFD4418E), Color(0xFF0652C5)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          const Text(
-            "Simple Quiz App",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
+          
           _questionWidget(),
           _answerList(),
           _nextButton(),
@@ -158,7 +159,7 @@ class _QuizScreenTwoState extends State<QuizScreenTwo> {
         style: TextStyle(color: isPassed ? Colors.green : Colors.redAccent),
       ),
       content: ElevatedButton(
-        child: const Text("Restart"),
+        child: const Text("EXIT"),
         onPressed: () {
           Navigator.pop(context);
           setState(() {

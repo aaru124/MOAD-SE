@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/feed/model/comment_model.dart';
-import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
-import 'package:flutter_application_1/student/pages/feed/model/user_model.dart';
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DemoValues {
@@ -11,8 +10,7 @@ class DemoValues {
   
   
   static final List<String> feed_users = [
-    'user-1',
-    //'user-2','user-3'
+    'user-1','user-2','user-3'
     /*UserModel(
       id: "1",
       name: "Ishfar",
@@ -108,8 +106,7 @@ Repudiandae sint soluta ullam sunt eos id laborum. Veniam molestiae ipsa odit so
   ];*/
   
   static final List<String> posts = [
-    'post-1',
-    //'post-2','post-3'
+    'post-1','post-2','post-3'
     /*PostModel(
       id: "1",
       author: users[0],

@@ -17,40 +17,42 @@ List<Question> getQuestions() {
   //ADD questions and answer here
 
   list.add(Question(
-    "Who is the owner of Flutter?",
+    "Which of the following are CPU scheduling algorithms?",
     [
-      Answer("Nokia", false),
-      Answer("Samsung", false),
-      Answer("Google", true),
-      Answer("Apple", false),
-    ],
-  ));
-
-  list.add(Question(
-    "Who owns Iphone?",
-    [
-      Answer("Apple", true),
-      Answer("Microsoft", false),
-      Answer("Google", false),
-      Answer("Nokia", false),
-    ],
-  ));
-
-  list.add(Question(
-    "Youtube is _________  platform?",
-    [
-      Answer("Music Sharing", false),
-      Answer("Video Sharing", false),
-      Answer("Live Streaming", false),
+      Answer("Priority scheduling", false),
+      Answer("Round Robin", false),
+      Answer("Shortest Job First", false),
       Answer("All of the above", true),
     ],
   ));
 
   list.add(Question(
-    "Flutter user dart as a language?",
+    "FIFO scheduling is a type of:",
     [
-      Answer("True", true),
-      Answer("False", false),
+      Answer("Pre-emptive scheduling", false),
+      Answer("Non pre-emptive scheduling", true),
+      Answer("Deadline scheduling", false),
+      Answer("None of the above", false),
+    ],
+  ));
+
+  list.add(Question(
+    "In which of the following directory does the configuration files are present?",
+    [
+      Answer("/bin/", false),
+      Answer("/root/", false),
+      Answer("/etc/", true),
+      Answer("/dev/", false),
+    ],
+  ));
+
+  list.add(Question(
+    "The file owner can change the access permission by _____ command.",
+    [
+      Answer("chmod", true),
+      Answer("ahmod", false),
+      Answer("enmod", true),
+      Answer("ehmod", true),
     ],
   ));
 

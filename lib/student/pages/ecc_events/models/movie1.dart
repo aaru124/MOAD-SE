@@ -54,6 +54,7 @@ class _MyWidgetState extends State<Movie> {
       Movie a= Movie(title: "${data['title']}", imageUrl: "${data['img']}", year: "${data['year']}", ecc: data['ecc'], button: data['disabled'], user: user,total: total,srno: data['srno'],);
       movieList.add(a);
     }
+    
   }
   
 }
@@ -94,6 +95,7 @@ Future<List<DocumentSnapshot>> getData() async {
                 leading: Image.asset(movie.imageUrl),
                 trailing: Icon(Icons.arrow_forward_ios_rounded),
                 onTap: () {
+                  
                   Navigator.push(
                       context,
                       MaterialPageRoute(

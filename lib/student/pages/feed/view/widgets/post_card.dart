@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/feed/helper/common.dart';
-import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
+//import 'package:flutter_application_1/student/pages/feed/model/post_model.dart';
 import 'package:flutter_application_1/student/pages/feed/view/pages/post_page.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/inherited_widgets/inherited_post_model.dart';
-import 'package:flutter_application_1/student/pages/feed/view/widgets/post_stats.dart';
+//import 'package:flutter_application_1/student/pages/feed/view/widgets/post_stats.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/post_time_stamp.dart';
 import 'package:flutter_application_1/student/pages/feed/view/widgets/user_details.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,12 +27,15 @@ class PostCard extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: aspectRatio,
         child: Card(
+          
           elevation: 2,
           child: Container(
+            height: 50,
             margin: const EdgeInsets.all(4.0),
             padding: const EdgeInsets.all(4.0),
             child: InheritedPostModel(
               postData: postData,
+
               child: Column(
                 children: <Widget>[
                   _Post(),
@@ -69,8 +72,8 @@ class _PostTitleSummaryAndTime extends StatelessWidget {
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('feed-post');
     final String postData = InheritedPostModel.of(context).postData;
-    final TextStyle titleTheme = TextStyle(fontSize: 20);
-    final TextStyle summaryTheme = TextStyle(fontSize: 10);
+    final TextStyle titleTheme = TextStyle(fontSize: 23,fontWeight: FontWeight.bold,color: Colors.grey);
+    final TextStyle summaryTheme = TextStyle(fontSize: 15);
     
     final int flex = isLandscape(context) ? 5 : 3;
     return FutureBuilder<DocumentSnapshot>(
@@ -100,12 +103,14 @@ class _PostTitleSummaryAndTime extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text(data['title'], style: titleTheme),
-                SizedBox(height: 2.0),
-                Text(data['summary'], style: summaryTheme),
+                Padding(padding:EdgeInsets.fromLTRB(20,10,0,0),child: Text(data['title'], style: titleTheme)),
+                SizedBox(height: 10.0,),
+                Padding(padding:EdgeInsets.fromLTRB(20,0,0,0),child:Text(data['summary'], style: summaryTheme)),
+                SizedBox(height: 50.0,),
+                PostTimeStamp(alignment: Alignment.centerRight),
               ],
             ),
-            PostTimeStamp(alignment: Alignment.centerRight),
+            //PostTimeStamp(alignment: Alignment.centerRight),
           ],
         ),
       ),
