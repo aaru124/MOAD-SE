@@ -64,7 +64,7 @@ class _AttendanceHomeState extends State<AttendanceHome> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Mobile Application Development",
+                              "Mobile Application Dev.",
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

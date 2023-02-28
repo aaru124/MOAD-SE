@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/student/pages/feed/view/pages/post_page.dart';
-import 'package:flutter_application_1/student/pages/task_manager/shared_pref.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../student_main.dart';
@@ -10,14 +9,15 @@ import '../widgets/todo_item.dart';
 
 class Home extends StatefulWidget {
   final String user;
-  Home({Key? key, required this.user}) : super(key: key);
+  List<ToDo> todosList;
+  Home({Key? key, required this.user, required this.todosList}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  SharedPref sharedPref = SharedPref();
+  
   /*List<ToDo> todoList() {
     return [
       ToDo(id: '01', todoText: 'Morning Exercise', isDone: true),
@@ -35,25 +35,19 @@ class _HomeState extends State<Home> {
       ),
     ];*/
 
-  void makeTask(Map<String, dynamic> data) {
-    for (int i = 0; i < data['task'].length; i++) {
-      ToDo a = ToDo(
-          id: data['task']["task-${i + 1}"]["id"],
-          todoText: data['task']["task-${i + 1}"]["text"],
-          isDone: data['task']["task-${i + 1}"]["isDone"]);
-      todosList.add(a);
-    }
-  }
+  
 
   late String user;
-  List<ToDo> todosList = [];
+  late List<ToDo> todosList;
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
 
   @override
   void initState() {
     user = widget.user;
+    todosList=widget.todosList;
     _foundToDo = todosList;
+    
     super.initState();
   }
   
@@ -99,7 +93,8 @@ class _HomeState extends State<Home> {
             if (snapshot.connectionState == ConnectionState.done) {
               Map<String, dynamic> data =
                   snapshot.data!.data() as Map<String, dynamic>;
-              makeTask(data);
+              
+             
               return Scaffold(
                 backgroundColor: tdBGColor,
                 appBar: _buildAppBar(),
@@ -112,7 +107,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Column(
                         children: [
-                          searchBox(),
+                          //searchBox(),
                           Expanded(
                             child: ListView(
                               children: [
@@ -130,6 +125,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 for (ToDo todoo in _foundToDo.reversed)
+                                
                                   ToDoItem(
                                     todo: todoo,
                                     onToDoChanged: _handleToDoChange,
@@ -210,7 +206,7 @@ class _HomeState extends State<Home> {
   }
 
   
-   Future<void> addApp( Map<String, dynamic> data) {
+   Future<void> update( Map<String, dynamic> data) {
     // Calling the collection to add a new user
     return FirebaseFirestore.instance.collection('users').doc(user)
         //adding to firebase collection
@@ -218,30 +214,59 @@ class _HomeState extends State<Home> {
         .then((value) => print(""))
         .catchError((error) => print("Event couldn't be added."));
   }
+ 
 
   void _handleToDoChange(ToDo todo) async{
     final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data = event_list.data()!;
     data["task"]["task-${todo.id}"]["isDone"]=!todo.isDone;
-    addApp(data);
+    final event_list1 = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final data1 = event_list.data()!;
+    update(data);
+    setState(()  {
+      
+      todo.isDone=data["task"]["task-${todo.id}"]['isDone'];
+      
+    });
+      //makeTask(data);
+      
+    
+  }
+
+  void _deleteToDoItem(String id,ToDo todo) async{
+    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final data = event_list.data()!;
+    final a=data["task"];
+    a.remove("task-${todo.id}");
+    update(data);
+    
     setState(() {
+      
+      todosList.removeWhere((item) => item.id==todo.id);
+      
+      //makeTask(data);
+      
       
     });
   }
 
-  void _deleteToDoItem(String id) {
+  void _addToDoItem(String toDo) async{
+    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final data = event_list.data()!;
+    final a=data["task"];
+    int len=_foundToDo.length;
+    a["task-${len+1}"]={"text":toDo,"isDone":false,"id":"${len+1}"};
+    update(data);
+    final event_list1 = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final data1 = event_list.data()!;
     setState(() {
-      todosList.removeWhere((item) => item.id == id);
-    });
-  }
-
-  void _addToDoItem(String toDo) {
-    setState(() {
+      
       todosList.add(ToDo(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        id: "${_foundToDo.length+1}",
         todoText: toDo,
       ));
     });
+    
     _todoController.clear();
   }
 

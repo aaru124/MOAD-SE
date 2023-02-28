@@ -17,7 +17,7 @@ class InheritedPostModel extends InheritedWidget {
 
   static InheritedPostModel of(BuildContext context) {
     final InheritedPostModel? result = maybeOf(context);
-    assert(result != null, 'No FrogColor found in context');
+    assert(result != null, '');
     return result!;
   }
 

@@ -128,7 +128,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.network(
+              Image.asset(
                 movie.imageUrl,
                 height: 700,
               ),

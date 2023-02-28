@@ -74,8 +74,8 @@ class _PostTitleSummaryAndTime extends StatelessWidget {
         FirebaseFirestore.instance.collection('feed-post');
     final String postData = InheritedPostModel.of(context).postData;
     final TextStyle titleTheme = TextStyle(
-        fontSize: 23, fontWeight: FontWeight.bold, color: Colors.grey);
-    final TextStyle summaryTheme = TextStyle(fontSize: 15);
+        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey);
+    final TextStyle summaryTheme = TextStyle(fontSize: 12);
 
     final int flex = isLandscape(context) ? 5 : 3;
     return FutureBuilder<DocumentSnapshot>(
@@ -109,13 +109,13 @@ class _PostTitleSummaryAndTime extends StatelessWidget {
                             padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
                             child: Text(data['title'], style: titleTheme)),
                         SizedBox(
-                          height: 10.0,
+                          height: 30.00,
                         ),
                         Padding(
                             padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                             child: Text(data['summary'], style: summaryTheme)),
                         SizedBox(
-                          height: 50.0,
+                          height: 5.00,
                         ),
                         PostTimeStamp(alignment: Alignment.centerRight),
                       ],

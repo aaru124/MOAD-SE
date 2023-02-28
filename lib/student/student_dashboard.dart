@@ -25,11 +25,18 @@ class _DashboardState extends State<Dashboard> {
     user = widget.user;
     super.initState();
   }
-
+  //List<ToDo> todosList=[];
   DateTime date = DateTime.now();
-  final todosList = ToDo.todoList();
-  List<ToDo> _foundToDo = [];
+    List<Widget> a=[];
 
+  //final todosList = ToDo.todoList();
+  List<ToDo> _foundToDo = [];
+  void makeList(Map<String, dynamic> data){
+    for(int i=1;i<=data['task'].length;i++){
+      var b=buildTaskItem(data['task'].length, ToDo(id: "${data['task']['task-$i']['id']}", todoText: "${data['task']['task-$i']['text']}", isDone: data['task']['task-$i']['isDone']), Colors.green);
+      a.add(b);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -48,6 +55,7 @@ class _DashboardState extends State<Dashboard> {
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
+          makeList(data);
           return Stack(
             children: [
               Container(
@@ -192,7 +200,7 @@ class _DashboardState extends State<Dashboard> {
                                     fontWeight: FontWeight.bold),
                                 children: [
                                   TextSpan(
-                                    text: "(4)",
+                                    text: "(${data['task'].length})",
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
@@ -223,11 +231,7 @@ class _DashboardState extends State<Dashboard> {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: [
-                            buildTaskItem(3, todosList[0], Colors.red),
-                            buildTaskItem(3, todosList[1], Colors.green),
-                            buildTaskItem(3, todosList[2], Colors.green),
-                          ],
+                          children: a,
                         ),
                       ),
                     ],
@@ -255,30 +259,30 @@ class _DashboardState extends State<Dashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Deadline",
-            style: TextStyle(fontSize: 10, color: Colors.grey),
-          ),
-          SizedBox(
-            height: 5,
-          ),
+          
           Row(
             children: [
               Container(
                 height: 6,
                 width: 6,
-                decoration: BoxDecoration(
+                decoration: (courseTitle.isDone)?BoxDecoration(
                   color: color,
+                  borderRadius: BorderRadius.circular(3),
+                ):BoxDecoration(
+                  color: Colors.red,
                   borderRadius: BorderRadius.circular(3),
                 ),
               ),
               SizedBox(
                 width: 5,
               ),
-              Text(
-                "$numDays days left",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-              ),
+              (courseTitle.isDone)?Text(
+            "Completed",
+            style: TextStyle(fontSize: 10, color: Colors.grey),
+          ):Text("Not completed",style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 49, 3, 3)),),
+          SizedBox(
+            height: 5,
+          ),
             ],
           ),
           SizedBox(

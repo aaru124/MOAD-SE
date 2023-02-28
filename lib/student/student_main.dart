@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login_page.dart';
-import 'package:flutter_application_1/logout.dart';
-import 'package:flutter_application_1/student/pages/student_about_dev.dart';
+import 'package:flutter_application_1/student/pages/student_about_app.dart';
 import 'package:flutter_application_1/student/pages/student_faq.dart';
 import 'package:flutter_application_1/student/pages/student_t&c.dart';
 import 'package:flutter_application_1/student/pages/student_train_concession.dart';

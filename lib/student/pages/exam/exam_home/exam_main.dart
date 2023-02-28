@@ -68,7 +68,7 @@ class _ExamMainState extends State<ExamMain> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Mobile Application Development",
+                              "Mobile Application Dev.",
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

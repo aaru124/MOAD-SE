@@ -27,7 +27,7 @@ class DescriptionTab extends StatelessWidget {
           ),
           SizedBox(height: 25.0),
           Text(
-            "Job Responsbilities",
+            "Job Responsibilities",
             style: kTitleStyle.copyWith(fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 15.0),

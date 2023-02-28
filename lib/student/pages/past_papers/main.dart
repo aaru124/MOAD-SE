@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/past_papers/faq.dart';
+import 'package:flutter_application_1/student/pages/past_papers/yr_screen.dart';
 
 class PastPaperMain extends StatelessWidget {
   final String user;
