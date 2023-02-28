@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ToDo {
-  String? id;
+  String id;
   String todoText;
   bool isDone;
   final prefs = SharedPreferences.getInstance();

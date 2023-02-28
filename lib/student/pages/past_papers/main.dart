@@ -8,7 +8,9 @@ class PastPaperMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: YearScreen(user: user,),
+      home: YearScreen(
+        user: user,
+      ),
     );
   }
 }

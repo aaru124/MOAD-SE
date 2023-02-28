@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/results/Year/First_Year/sem_one_result.dart';
-import 'package:flutter_application_1/student/pages/results/Year/Third_Year/sem_six_result.dart';
 import 'package:flutter_application_1/student/pages/results/result_year.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../student_main.dart';
-import 'Year/First_Year/sem_two_result.dart';
-import 'Year/Second_Year/sem_four_result.dart';
-import 'Year/Second_Year/sem_third_result.dart';
-import 'Year/Third_Year/sem_five_result.dart';
+
 
 class ResultList extends StatefulWidget {
   final String user;

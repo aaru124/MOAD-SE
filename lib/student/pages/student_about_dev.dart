@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/login_page.dart';
+import 'package:flutter_application_1/student/student_main.dart';
 
 class AboutDev extends StatefulWidget {
+  final String user;
+  AboutDev({required this.user});
   @override
   _AboutDevState createState() => _AboutDevState();
 }
 
 class _AboutDevState extends State<AboutDev> {
+  late String user;
+  @override
+  void initState() {
+    user = widget.user;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +48,14 @@ class _AboutDevState extends State<AboutDev> {
                 "One App for all your study-related needs.\n\nThis is designed considering the needs of students in college.\n\nDiscover various features provided by this app.\n\nKeep track of your daily activities, routines, and tasks.\n\nView daily assignment Updates\n\nMaintain track of ECC Credit points.Track total lectures attended.\n\nGet Access to past papers, attend online exams, and many more features.\n\nThis app contains features that are useful to students as well as staff working in the college."),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => HomePage(
+                              user: user,
+                            )));
+              },
               child: Text("Visit"),
             )
           ],

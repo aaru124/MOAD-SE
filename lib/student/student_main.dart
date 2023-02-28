@@ -64,7 +64,9 @@ class _HomePageState extends State<HomePage> {
     } else if (currentPage == DrawerSections.faq) {
       container = FaQ();
     } else if (currentPage == DrawerSections.about) {
-      container = AboutDev();
+      container = AboutDev(
+        user: user,
+      );
     } else if (currentPage == DrawerSections.send_feedback) {
       container = FeedBack();
     } else if (currentPage == DrawerSections.logout) {
