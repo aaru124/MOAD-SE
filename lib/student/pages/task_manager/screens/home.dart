@@ -9,22 +9,24 @@ import '../widgets/todo_item.dart';
 
 class Home extends StatefulWidget {
   final String user;
-  Home({Key? key,required this.user}) : super(key: key);
+  Home({Key? key, required this.user}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-   SharedPref sharedPref = SharedPref();
-   void makeL() async{
-    final prefs =  await SharedPreferences.getInstance();
+  SharedPref sharedPref = SharedPref();
+  void makeL() async {
+    final prefs = await SharedPreferences.getInstance();
 
-    prefs.setStringList('todolist', [a.toJson().toString(),b.toJson().toString(), b.toJson().toString()]);
+    prefs.setStringList('todolist',
+        [a.toJson().toString(), b.toJson().toString(), b.toJson().toString()]);
   }
-  ToDo a=ToDo(id: '01', todoText: 'Morning Exercise', isDone: true);
-  ToDo b=ToDo(id: '02', todoText: 'Morning Exercise', isDone: false);
-  ToDo c=ToDo(id: '03', todoText: 'Morning Exercise', isDone: false);
+
+  ToDo a = ToDo(id: '01', todoText: 'Morning Exercise', isDone: true);
+  ToDo b = ToDo(id: '02', todoText: 'Morning Exercise', isDone: false);
+  ToDo c = ToDo(id: '03', todoText: 'Morning Exercise', isDone: false);
   late String user;
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
@@ -32,10 +34,9 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    user=widget.user;
+    user = widget.user;
     _foundToDo = todosList;
     super.initState();
-    
   }
 
   @override
@@ -153,7 +154,6 @@ class _HomeState extends State<Home> {
   void _deleteToDoItem(String id) {
     setState(() {
       todosList.removeWhere((item) => item.id == id);
-      
     });
   }
 
@@ -217,9 +217,12 @@ class _HomeState extends State<Home> {
         backgroundColor: tdBGColor,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage(user: user,))),
-         
+          onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomePage(
+                        user: user,
+                      ))),
         ));
   }
 }

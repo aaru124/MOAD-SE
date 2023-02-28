@@ -8,10 +8,6 @@ import 'package:flutter_application_1/student/pages/student_train_concession.dar
 import 'package:flutter_application_1/student/pages/student_leave_apply.dart';
 import 'package:flutter_application_1/student/pages/student_attendance_manager.dart';
 import 'package:flutter_application_1/student/student_home.dart';
-
-import 'package:flutter_application_1/student/pages/student_settings.dart';
-import 'package:flutter_application_1/student/pages/student_notification.dart';
-
 import 'pages/student_feedback.dart';
 
 import 'pages/student_leave_apply.dart';
@@ -25,7 +21,7 @@ class StudentMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(user:user),
+      home: HomePage(user: user),
     );
   }
 }
@@ -40,14 +36,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var currentPage = DrawerSections.dashboard;
   late String user;
-final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   //signout function
   signOut() async {
     await auth.signOut();
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
- 
+
   @override
   void initState() {
     user = widget.user;
@@ -58,7 +54,7 @@ final FirebaseAuth auth = FirebaseAuth.instance;
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.dashboard) {
-      container = Nav(user:user);
+      container = Nav(user: user);
     } else if (currentPage == DrawerSections.leave) {
       container = Leave();
     } else if (currentPage == DrawerSections.train) {
@@ -69,63 +65,62 @@ final FirebaseAuth auth = FirebaseAuth.instance;
       container = FaQ();
     } else if (currentPage == DrawerSections.about) {
       container = AboutDev();
-    } else if (currentPage == DrawerSections.settings) {
-      container = Settings();
-    } else if (currentPage == DrawerSections.notification) {
-      container = Notifications();
     } else if (currentPage == DrawerSections.send_feedback) {
       container = FeedBack();
     } else if (currentPage == DrawerSections.logout) {
-      container =  AlertDialog(
-                  title: const Text(""),
-                  content: const Text("Do you really want to log out?",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 26),),
-                  actions: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children:[ElevatedButton(
-                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-  ),
-                      onPressed: () {
-                        signOut();
-                        
-                      },
-                      
-                      child: Container(
-                        child:Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                          const Text("yes",style: TextStyle(fontSize: 20,color: Colors.white),),
-                          ])
-                        
-                        
+      container = AlertDialog(
+        title: const Text(""),
+        content: const Text(
+          "Do you really want to log out?",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+        ),
+        actions: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                ),
+                onPressed: () {
+                  signOut();
+                },
+                child: Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                      const Text(
+                        "yes",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
-                    ),
-                    ElevatedButton(
-                       style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.lightGreen,
-  ),
-                      onPressed: () {
-                        //Navigator.of(context).pop();
-                        Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => StudentMainScreen(user: user,)));
-                      },
-                      child: Container(
-                        child:Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                          
-                          const Text("no",style: TextStyle(fontSize:20,color: Colors.white))],)
-                        
-                        
-                      ),
-                    ),
+                    ])),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightGreen,
+                ),
+                onPressed: () {
+                  //Navigator.of(context).pop();
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StudentMainScreen(
+                                user: user,
+                              )));
+                },
+                child: Container(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text("no",
+                        style: TextStyle(fontSize: 20, color: Colors.white))
                   ],
-                    ),
-                  ],
-  
-                );
-              
+                )),
+              ),
+            ],
+          ),
+        ],
+      );
     }
     return Scaffold(
       appBar: AppBar(
@@ -133,39 +128,39 @@ final FirebaseAuth auth = FirebaseAuth.instance;
         iconTheme: IconThemeData(color: Colors.black),
         actions: [
           SizedBox(
-             height:10, //height of button
-             width:150, 
-             child:ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
-            onPressed: (){
-               Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AttendanceManager(user:user)));
-            }, 
-          child:  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-
-            Icon(
-            Icons.cast_for_education,color: Color.fromARGB(255, 40, 36, 36),),
-            
-          Text("Attendance",style: TextStyle(color:Color.fromARGB(255, 40, 36, 36)),),
-          ]
-          ,)
-          ),
+            height: 10, //height of button
+            width: 150,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AttendanceManager(user: user)));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Icon(
+                      Icons.cast_for_education,
+                      color: Color.fromARGB(255, 40, 36, 36),
+                    ),
+                    Text(
+                      "Attendance",
+                      style: TextStyle(color: Color.fromARGB(255, 40, 36, 36)),
+                    ),
+                  ],
+                )),
           )
-       
         ],
       ),
-      
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Container(
             child: Column(
               children: [
-                MyHeaderDrawer(user:user),
+                MyHeaderDrawer(user: user),
                 MyDrawerList(),
               ],
             ),
@@ -194,13 +189,9 @@ final FirebaseAuth auth = FirebaseAuth.instance;
               currentPage == DrawerSections.term ? true : false),
           menuItem(5, "FAQs", Icons.question_answer,
               currentPage == DrawerSections.faq ? true : false),
-          menuItem(6, "About the Devs", Icons.notifications_outlined,
+          menuItem(6, "About the App", Icons.notifications_outlined,
               currentPage == DrawerSections.about ? true : false),
           Divider(),
-          menuItem(7, "Settings", Icons.settings,
-              currentPage == DrawerSections.settings ? true : false),
-          menuItem(8, "Notification", Icons.notification_add,
-              currentPage == DrawerSections.notification ? true : false),
           menuItem(9, "Send feedback", Icons.feedback_outlined,
               currentPage == DrawerSections.send_feedback ? true : false),
           Divider(),
@@ -230,10 +221,6 @@ final FirebaseAuth auth = FirebaseAuth.instance;
               currentPage = DrawerSections.faq;
             } else if (id == 6) {
               currentPage = DrawerSections.about;
-            } else if (id == 7) {
-              currentPage = DrawerSections.settings;
-            } else if (id == 8) {
-              currentPage = DrawerSections.notification;
             } else if (id == 9) {
               currentPage = DrawerSections.send_feedback;
             } else if (id == 10) {

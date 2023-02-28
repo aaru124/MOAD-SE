@@ -16,7 +16,9 @@ class HomePage extends StatelessWidget {
       body: ListView.builder(
         itemCount: DemoValues.posts.length,
         itemBuilder: (BuildContext context, int index) {
-          return PostCard(postData: DemoValues.posts[index], userData: DemoValues.feed_users[index]);
+          return PostCard(
+              postData: DemoValues.posts[index],
+              userData: DemoValues.feed_users[index]);
         },
       ),
     );

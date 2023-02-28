@@ -14,7 +14,9 @@ class PlacementMain extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(user: user,),
+      home: Home(
+        user: user,
+      ),
     );
   }
 }

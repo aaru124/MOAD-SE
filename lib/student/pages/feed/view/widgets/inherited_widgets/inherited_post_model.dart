@@ -5,8 +5,11 @@ class InheritedPostModel extends InheritedWidget {
   final String postData;
   final Widget child;
 
-  InheritedPostModel({super.key,  required this.postData,required this.child,})
-      : super(child: child);
+  InheritedPostModel({
+    super.key,
+    required this.postData,
+    required this.child,
+  }) : super(child: child);
 
   static InheritedPostModel? maybeOf(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<InheritedPostModel>();

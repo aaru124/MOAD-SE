@@ -15,7 +15,7 @@ class TaskManager extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           textTheme: GoogleFonts.poppinsTextTheme()),
-      home: TaskMain(user:user),
+      home: TaskMain(user: user),
       debugShowCheckedModeBanner: false,
     );
   }

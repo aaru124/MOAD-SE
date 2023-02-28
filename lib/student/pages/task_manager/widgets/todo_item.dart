@@ -17,7 +17,6 @@ class ToDoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: ListTile(

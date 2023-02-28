@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '46799448407',
     projectId: 'cms-xaviers',
     storageBucket: 'cms-xaviers.appspot.com',
-    iosClientId: '46799448407-gik0ac277p23rkfn3kf6r6ljpt4e9hvf.apps.googleusercontent.com',
+    iosClientId:
+        '46799448407-gik0ac277p23rkfn3kf6r6ljpt4e9hvf.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterApplication1',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '46799448407',
     projectId: 'cms-xaviers',
     storageBucket: 'cms-xaviers.appspot.com',
-    iosClientId: '46799448407-gik0ac277p23rkfn3kf6r6ljpt4e9hvf.apps.googleusercontent.com',
+    iosClientId:
+        '46799448407-gik0ac277p23rkfn3kf6r6ljpt4e9hvf.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterApplication1',
   );
 }

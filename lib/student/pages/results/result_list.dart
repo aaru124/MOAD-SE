@@ -24,21 +24,23 @@ class _ResultListState extends State<ResultList> {
     user = widget.user;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result",
-        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Color.fromARGB(179, 4, 3, 3),
-                                fontSize: 25,
-                                fontWeight: FontWeight.w600)),),
+        title: Text(
+          "Result",
+          style: GoogleFonts.openSans(
+              textStyle: TextStyle(
+                  color: Color.fromARGB(179, 4, 3, 3),
+                  fontSize: 25,
+                  fontWeight: FontWeight.w600)),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-                 onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage(user:user))),
-        
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomePage(user: user))),
         ),
         backgroundColor: Colors.white,
       ),
@@ -66,7 +68,10 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user: user,sem: "1",)))),
+                                      builder: (context) => ResultYear(
+                                            user: user,
+                                            sem: "1",
+                                          )))),
                           SizedBox(
                             height: 25,
                           ),
@@ -78,7 +83,8 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user:user,sem:"2")))),
+                                      builder: (context) =>
+                                          ResultYear(user: user, sem: "2")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -110,7 +116,8 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user:user,sem:"3")))),
+                                      builder: (context) =>
+                                          ResultYear(user: user, sem: "3")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -122,7 +129,8 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user:user,sem:"4")))),
+                                      builder: (context) =>
+                                          ResultYear(user: user, sem: "4")))),
                           SizedBox(
                             height: 25,
                           ),
@@ -154,7 +162,10 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user:user,sem: "5",)))),
+                                      builder: (context) => ResultYear(
+                                            user: user,
+                                            sem: "5",
+                                          )))),
                           SizedBox(
                             height: 25,
                           ),
@@ -166,7 +177,10 @@ class _ResultListState extends State<ResultList> {
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ResultYear(user:user,sem: "6",)))),
+                                      builder: (context) => ResultYear(
+                                            user: user,
+                                            sem: "6",
+                                          )))),
                           SizedBox(
                             height: 25,
                           ),

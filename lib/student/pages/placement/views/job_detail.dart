@@ -29,10 +29,9 @@ class JobDetail extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body:  DefaultTabController(
+      body: DefaultTabController(
         length: 2,
         child: Container(
-         
           width: double.infinity,
           // margin: EdgeInsets.only(top: 50.0),
           padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 15.0),
@@ -135,9 +134,7 @@ class JobDetail extends StatelessWidget {
             ],
           ),
         ),
-      
       ),
-      
     );
   }
 }

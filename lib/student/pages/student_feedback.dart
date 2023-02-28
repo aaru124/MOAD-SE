@@ -18,23 +18,25 @@ class FeedBack extends StatefulWidget {
 
 class _FeedBackState extends State<FeedBack> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController _name=TextEditingController();
-  TextEditingController _email=TextEditingController();
-  TextEditingController _query=TextEditingController();
-  CollectionReference students = FirebaseFirestore.instance.collection('feedback');
-Future<void> addApp(String name,String email, String query) {
-      // Calling the collection to add a new user
-      return students
-          //adding to firebase collection
-          .add({
-            //Data added in the form of a dictionary into the document.
-            'full_name': name, 
-            'email': email, 
-            'query': query,
-          })
-          .then((value) => print(""))
-          .catchError((error) => print(""));
-}
+  TextEditingController _name = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _query = TextEditingController();
+  CollectionReference students =
+      FirebaseFirestore.instance.collection('feedback');
+  Future<void> addApp(String name, String email, String query) {
+    // Calling the collection to add a new user
+    return students
+        //adding to firebase collection
+        .add({
+          //Data added in the form of a dictionary into the document.
+          'full_name': name,
+          'email': email,
+          'query': query,
+        })
+        .then((value) => print(""))
+        .catchError((error) => print(""));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +55,6 @@ Future<void> addApp(String name,String email, String query) {
                   }
                   return null;
                 },
-                
               ),
               SizedBox(height: 16),
               TextFormField(
@@ -65,7 +66,6 @@ Future<void> addApp(String name,String email, String query) {
                   }
                   return null;
                 },
-                
               ),
               SizedBox(height: 16),
               TextFormField(
@@ -78,7 +78,6 @@ Future<void> addApp(String name,String email, String query) {
                   }
                   return null;
                 },
-                
               ),
               SizedBox(height: 16),
               ElevatedButton(

@@ -5,7 +5,7 @@ import 'screens/home.dart';
 
 class TaskMain extends StatelessWidget {
   final String user;
-  const TaskMain({super.key, required this.user}) ;
+  const TaskMain({super.key, required this.user});
 
   // This widget is the root of your application.
   @override
@@ -15,7 +15,9 @@ class TaskMain extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ToDo App',
-      home: Home(user: user,),
+      home: Home(
+        user: user,
+      ),
     );
   }
 }

@@ -22,6 +22,7 @@ class _ExamMainState extends State<ExamMain> {
     user = widget.user;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,11 @@ class _ExamMainState extends State<ExamMain> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage(user: user,)))),
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomePage(
+                          user: user,
+                        )))),
         backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -38,8 +43,10 @@ class _ExamMainState extends State<ExamMain> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OnbordingOne(user:user)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OnbordingOne(user: user)));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
@@ -56,29 +63,29 @@ class _ExamMainState extends State<ExamMain> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SingleChildScrollView(child:
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Mobile Application Development",
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Mobile Application Development",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            "Prof. Lydia Fernandes",
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.75),
-                              fontWeight: FontWeight.w500,
+                            const SizedBox(height: 4),
+                            Text(
+                              "Prof. Lydia Fernandes",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.75),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),),
-                      
+                          ],
+                        ),
+                      ),
                       Image.asset(
                         "assets/java.png",
                         width: 36,
@@ -90,115 +97,119 @@ class _ExamMainState extends State<ExamMain> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OnbordingTwo(user:user)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OnbordingTwo(user: user)));
                 },
-                child:Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 120,
-                margin: const EdgeInsets.only(bottom: 16),
-                padding: const EdgeInsets.all(36),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Colors.blue,
-                        Colors.red,
-                      ],
-                    )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SingleChildScrollView(child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Software Engineering",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 120,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  padding: const EdgeInsets.all(36),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.blue,
+                          Colors.red,
+                        ],
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Software Engineering",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "Prof. Lydia Fernandes",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.75),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          "Prof. Lydia Fernandes",
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.75),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),),
-                    
-                    Image.asset(
-                      "assets/java.png",
-                      width: 36,
-                      height: 36,
-                    ),
-                  ],
+                      ),
+                      Image.asset(
+                        "assets/java.png",
+                        width: 36,
+                        height: 36,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OnbordingThree(user:user)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OnbordingThree(user: user)));
                 },
-                child:
-              Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: 120,
-                margin: const EdgeInsets.only(bottom: 16),
-                padding: const EdgeInsets.all(36),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Colors.blue,
-                        Colors.red,
-                      ],
-                    )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SingleChildScrollView(child:
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Modern Operating System",
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 120,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  padding: const EdgeInsets.all(36),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.blue,
+                          Colors.red,
+                        ],
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Modern Operating System",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              "Prof. Aaron Johns",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.75),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          "Prof. Aaron Johns",
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.75),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ), ),
-                    
-                    Image.asset(
-                      "assets/java.png",
-                      width: 36,
-                      height: 36,
-                    ),
-                  ],
+                      ),
+                      Image.asset(
+                        "assets/java.png",
+                        width: 36,
+                        height: 36,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
               ),
             ],
           ),

@@ -3,65 +3,58 @@ import 'package:flutter_application_1/student/pages/results/result_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SemFiveResult extends StatefulWidget {
-final String user;
-SemFiveResult({required this.user});
+  final String user;
+  SemFiveResult({required this.user});
   @override
   _SemFiveResult createState() => _SemFiveResult();
 }
 
 class _SemFiveResult extends State<SemFiveResult> {
   late String user;
-  List calc_gpa(int total_marks){
-    List a=[];
-    int gpa=0;
-    String grade="";
-    if (total_marks>=80){
-      gpa=10;
-      if(total_marks>=90){
-        grade="OS";
+  List calc_gpa(int total_marks) {
+    List a = [];
+    int gpa = 0;
+    String grade = "";
+    if (total_marks >= 80) {
+      gpa = 10;
+      if (total_marks >= 90) {
+        grade = "OS";
+      } else {
+        grade = "AA";
       }
-      else{
-        grade="AA";
-      }
-    }
-    else if (total_marks>=70){
-      gpa=9;
-      grade="AB";
-    }
-    else if (total_marks>=60){
-      gpa=8;
-      grade="BB";
-    }
-    else if (total_marks>=55){
-      gpa=7;
-      grade="BC";
-    }
-    else if (total_marks>=50){
-      gpa=6;
-      grade="CC";
-
-    }
-    else if (total_marks>=45){
-      gpa=5;
-      grade="CD";
-    }
-    else if (total_marks>=40){
-      gpa=4;
-      grade="DD";
-    }
-    else{
-      gpa=0;
-      grade="FF";
+    } else if (total_marks >= 70) {
+      gpa = 9;
+      grade = "AB";
+    } else if (total_marks >= 60) {
+      gpa = 8;
+      grade = "BB";
+    } else if (total_marks >= 55) {
+      gpa = 7;
+      grade = "BC";
+    } else if (total_marks >= 50) {
+      gpa = 6;
+      grade = "CC";
+    } else if (total_marks >= 45) {
+      gpa = 5;
+      grade = "CD";
+    } else if (total_marks >= 40) {
+      gpa = 4;
+      grade = "DD";
+    } else {
+      gpa = 0;
+      grade = "FF";
     }
     a.add(gpa);
     a.add(grade);
     return a;
   }
+
   @override
   void initState() {
     user = widget.user;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,8 +62,12 @@ class _SemFiveResult extends State<SemFiveResult> {
           appBar: AppBar(
             leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResultList(user: user,)))),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultList(
+                              user: user,
+                            )))),
             backgroundColor: Colors.white,
             title: Text(
               'Semester Five',
@@ -128,94 +125,101 @@ class _SemFiveResult extends State<SemFiveResult> {
               )),
             ),
             SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  DataTable(
-                columns: [
-                  DataColumn(
-                      label: Text('No.',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('Subject',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('Course Code',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('CIA Marks',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('End Sem Marks',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('Total Marks',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  DataColumn(
-                      label: Text('Grade',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                ],
-                rows: [
-                  DataRow(cells: [
-                    DataCell(Text('1')),
-                    DataCell(Text('MOAD')),
-                    DataCell(Text('SITS0402')),
-                    DataCell(Text('5')),
-                    DataCell(Text('5')),
-                    DataCell(Text('10')),
-                    DataCell(Text('A')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('2')),
-                    DataCell(Text('MOAD')),
-                    DataCell(Text('SITS0402')),
-                    DataCell(Text('5')),
-                    DataCell(Text('5')),
-                    DataCell(Text('10')),
-                    DataCell(Text('A')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('3')),
-                    DataCell(Text('MOAD')),
-                    DataCell(Text('SITS0402')),
-                    DataCell(Text('5')),
-                    DataCell(Text('5')),
-                    DataCell(Text('10')),
-                    DataCell(Text('A')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('4')),
-                    DataCell(Text('MOAD')),
-                    DataCell(Text('SITS0402')),
-                    DataCell(Text('5')),
-                    DataCell(Text('5')),
-                    DataCell(Text('10')),
-                    DataCell(Text('A')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('')),
-                    DataCell(Text('')),
-                    DataCell(Text('')),
-                    DataCell(Text('')),
-                    DataCell(Text('')),
-                    DataCell(Text('SGPA',style: TextStyle(fontWeight: FontWeight.bold),)),
-                    DataCell(Text('10')),
-                  ]),
-                ],
-              ),
-              
-                ],)
-              
-             
-            ),
+                scrollDirection: Axis.horizontal,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DataTable(
+                      columns: [
+                        DataColumn(
+                            label: Text('No.',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('Subject',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('Course Code',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('CIA Marks',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('End Sem Marks',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('Total Marks',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                        DataColumn(
+                            label: Text('Grade',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold))),
+                      ],
+                      rows: [
+                        DataRow(cells: [
+                          DataCell(Text('1')),
+                          DataCell(Text('MOAD')),
+                          DataCell(Text('SITS0402')),
+                          DataCell(Text('5')),
+                          DataCell(Text('5')),
+                          DataCell(Text('10')),
+                          DataCell(Text('A')),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(Text('2')),
+                          DataCell(Text('MOAD')),
+                          DataCell(Text('SITS0402')),
+                          DataCell(Text('5')),
+                          DataCell(Text('5')),
+                          DataCell(Text('10')),
+                          DataCell(Text('A')),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(Text('3')),
+                          DataCell(Text('MOAD')),
+                          DataCell(Text('SITS0402')),
+                          DataCell(Text('5')),
+                          DataCell(Text('5')),
+                          DataCell(Text('10')),
+                          DataCell(Text('A')),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(Text('4')),
+                          DataCell(Text('MOAD')),
+                          DataCell(Text('SITS0402')),
+                          DataCell(Text('5')),
+                          DataCell(Text('5')),
+                          DataCell(Text('10')),
+                          DataCell(Text('A')),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(Text('')),
+                          DataCell(Text('')),
+                          DataCell(Text('')),
+                          DataCell(Text('')),
+                          DataCell(Text('')),
+                          DataCell(Text(
+                            'SGPA',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                          DataCell(Text('10')),
+                        ]),
+                      ],
+                    ),
+                  ],
+                )),
           ])),
     );
   }

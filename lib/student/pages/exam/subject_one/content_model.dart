@@ -10,7 +10,7 @@ class UnbordingContent {
 List<UnbordingContent> contents = [
   UnbordingContent(
       title: 'PRACTICE EXAM',
-      image: 'assets/logo.png',
+      image: 'assets/logo1.png',
       description:
           "1.All questions are compulsory.\n2.You are allowed to choose your answer only once.\n3.Make sure you answer correctly before submitting."),
   /*UnbordingContent(

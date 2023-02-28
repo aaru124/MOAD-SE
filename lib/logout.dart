@@ -40,10 +40,10 @@ class _logoutState extends State<logout> {
             },
             child: const Text("Show alert Dialog box"),
           ),
- 
+
 // RaidedButton is deprecated and should not be used
 // Instead use ElevatedButton
- 
+
           // child: RaisedButton(
           //   onPressed: () {
           //     showDialog(
@@ -52,10 +52,10 @@ class _logoutState extends State<logout> {
           //         title: const Text("Alert Dialog Box"),
           //         content: const Text("You have raised a Alert Dialog Box"),
           //         actions: <Widget>[
- 
-            // FlatButton is deprecated and should not be used
-            // Instead use TextButton
-             
+
+          // FlatButton is deprecated and should not be used
+          // Instead use TextButton
+
           //           FlatButton(
           //             onPressed: () {
           //               Navigator.of(ctx).pop();

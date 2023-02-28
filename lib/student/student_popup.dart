@@ -5,6 +5,7 @@ import 'package:flutter_application_1/student/pages/past_papers/past_paper_main.
 import 'package:flutter_application_1/student/pages/results/result_list.dart';
 import 'package:flutter_application_1/student/pages/student_attendance_manager.dart';
 import 'package:flutter_application_1/student/pages/ecc.dart';
+
 ///import 'package:flutter_application_1/student/pages/feed/data/placement/placement_main.dart';
 import 'package:flutter_application_1/student/pages/student_practice_exam.dart';
 import 'package:flutter_application_1/student/pages/student_placement.dart';
@@ -24,6 +25,7 @@ class _PopUpState extends State<PopUp> {
     user = widget.user;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +59,8 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PracticeExam(user: user)));
+                                  builder: (context) =>
+                                      PracticeExam(user: user)));
                         },
                       ),
                       SizedBox(
@@ -74,7 +77,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),
@@ -94,7 +96,7 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Fee(user:user)));
+                                  builder: (context) => Fee(user: user)));
                         },
                       ),
                       SizedBox(
@@ -111,7 +113,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),
@@ -131,7 +132,8 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ResultList(user:user)));
+                                  builder: (context) =>
+                                      ResultList(user: user)));
                         },
                       ),
                       SizedBox(
@@ -148,7 +150,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),
@@ -168,7 +169,8 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PlacementManager(user:user)));
+                                  builder: (context) =>
+                                      PlacementManager(user: user)));
                         },
                       ),
                       SizedBox(
@@ -185,7 +187,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),
@@ -205,7 +206,8 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Ecc_Tracker(user:user)));
+                                  builder: (context) =>
+                                      Ecc_Tracker(user: user)));
                         },
                       ),
                       SizedBox(
@@ -222,7 +224,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),
@@ -242,7 +243,9 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PastPaperMain(user: user,)));
+                                  builder: (context) => PastPaperMain(
+                                        user: user,
+                                      )));
                         },
                       ),
                       SizedBox(
@@ -259,7 +262,6 @@ class _PopUpState extends State<PopUp> {
                       SizedBox(
                         height: 8,
                       ),
-                      
                     ],
                   ),
                 ),

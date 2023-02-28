@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_application_1/student/pages/task_manager/model/todo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 class Dashboard extends StatefulWidget {
   final String user;
   Dashboard({required this.user});
@@ -19,24 +20,23 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   late String user;
-@override
+  @override
   void initState() {
     user = widget.user;
     super.initState();
   }
-  DateTime date= DateTime.now();
+
+  DateTime date = DateTime.now();
   final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
-  
+
   @override
-  
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(user).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
         if (snapshot.hasError) {
           return Text("Something went wrong");
         }
@@ -46,208 +46,199 @@ class _DashboardState extends State<Dashboard> {
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-    return  Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [
-                    Color(0xFFD4E7FE),
-                    Color(0xFFF0F0F0),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.6, 0.3])),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Column(
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
+          return Stack(
             children: [
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(width: 1, color: Colors.white),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(
-                            "${data['img']}"),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hi ${data['name']}",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w900,
-                          color: Color(0XFF343E87),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Here is a list of schedule",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        "You need to check...",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.blueGrey,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        Positioned(
-          top: 150,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            height: MediaQuery.of(context).size.height - 245,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [
+                          Color(0xFFD4E7FE),
+                          Color(0xFFF0F0F0),
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: [0.6, 0.3])),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: Column(
                   children: [
-                    RichText(
-                      text: TextSpan(
-                          text: 'Today\'s Class',
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                              text: "(${data.length})",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                          ]),
+                    SizedBox(
+                      height: 15,
                     ),
-                    GestureDetector(
-                      onTap: () => {
-                        Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TimeTable(user:user))),
-                        
-                        
-                      },
-                      child: Text(
-                        "See all",
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0XFF3E3993),
-                            fontWeight: FontWeight.bold),
-                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(width: 1, color: Colors.white),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("${data['img']}"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Hi ${data['name']}",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0XFF343E87),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Here is a list of schedule",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.blueGrey,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "You need to check...",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.blueGrey,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                
-                GetUserName(DateFormat('EEEE').format(date),'class-1'),
-                GetUserName(DateFormat('EEEE').format(date),'class-2'),
-                
-                
-                
-                SizedBox(
-                  height: 25,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                          text: 'Your Task',
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          children: [
-                            TextSpan(
-                              text: "(4)",
+              ),
+              Positioned(
+                top: 150,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  height: MediaQuery.of(context).size.height - 245,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: ListView(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                                text: 'Today\'s Class',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                children: [
+                                  TextSpan(
+                                    text: "(${data.length})",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ]),
+                          ),
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          TimeTable(user: user))),
+                            },
+                            child: Text(
+                              "See all",
                               style: TextStyle(
                                   fontSize: 12,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal),
+                                  color: Color(0XFF3E3993),
+                                  fontWeight: FontWeight.bold),
                             ),
-                          ]),
-                    ),
-                    GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => TaskManager(user:user)));
-                        },
-                        child: Text(
-                          "See all",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0XFF3E3993),
-                              fontWeight: FontWeight.bold),
-                        )),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      
-                      buildTaskItem(
-                          3, todosList[0], Colors.red),
-                      buildTaskItem(
-                          3, todosList[1], Colors.green),
-                      buildTaskItem(
-                          3, todosList[2] , Colors.green),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      GetUserName(DateFormat('EEEE').format(date), 'class-1'),
+                      GetUserName(DateFormat('EEEE').format(date), 'class-2'),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                                text: 'Your Task',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                children: [
+                                  TextSpan(
+                                    text: "(4)",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ]),
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            TaskManager(user: user)));
+                              },
+                              child: Text(
+                                "See all",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0XFF3E3993),
+                                    fontWeight: FontWeight.bold),
+                              )),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            buildTaskItem(3, todosList[0], Colors.red),
+                            buildTaskItem(3, todosList[1], Colors.green),
+                            buildTaskItem(3, todosList[2], Colors.green),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-                
-              ],
-            ),
-          ),
-        )
-      ],
-      );
-      } 
-  return Text("loading");
-          },
+              )
+            ],
+          );
+        }
+        return Text("loading");
+      },
     );
   }
 
@@ -304,10 +295,8 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-  
 
   Container buildClassItem(String text) {
-    
     return Container(
       margin: EdgeInsets.only(bottom: 15),
       padding: EdgeInsets.all(10),
@@ -390,6 +379,5 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
     );
-  
   }
 }

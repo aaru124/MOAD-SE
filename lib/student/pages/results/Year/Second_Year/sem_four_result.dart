@@ -11,57 +11,50 @@ class SemFourResult extends StatefulWidget {
 
 class _SemFourResult extends State<SemFourResult> {
   late String user;
-  List calc_gpa(int total_marks){
-    List a=[];
-    int gpa=0;
-    String grade="";
-    if (total_marks>=80){
-      gpa=10;
-      if(total_marks>=90){
-        grade="OS";
+  List calc_gpa(int total_marks) {
+    List a = [];
+    int gpa = 0;
+    String grade = "";
+    if (total_marks >= 80) {
+      gpa = 10;
+      if (total_marks >= 90) {
+        grade = "OS";
+      } else {
+        grade = "AA";
       }
-      else{
-        grade="AA";
-      }
-    }
-    else if (total_marks>=70){
-      gpa=9;
-      grade="AB";
-    }
-    else if (total_marks>=60){
-      gpa=8;
-      grade="BB";
-    }
-    else if (total_marks>=55){
-      gpa=7;
-      grade="BC";
-    }
-    else if (total_marks>=50){
-      gpa=6;
-      grade="CC";
-
-    }
-    else if (total_marks>=45){
-      gpa=5;
-      grade="CD";
-    }
-    else if (total_marks>=40){
-      gpa=4;
-      grade="DD";
-    }
-    else{
-      gpa=0;
-      grade="FF";
+    } else if (total_marks >= 70) {
+      gpa = 9;
+      grade = "AB";
+    } else if (total_marks >= 60) {
+      gpa = 8;
+      grade = "BB";
+    } else if (total_marks >= 55) {
+      gpa = 7;
+      grade = "BC";
+    } else if (total_marks >= 50) {
+      gpa = 6;
+      grade = "CC";
+    } else if (total_marks >= 45) {
+      gpa = 5;
+      grade = "CD";
+    } else if (total_marks >= 40) {
+      gpa = 4;
+      grade = "DD";
+    } else {
+      gpa = 0;
+      grade = "FF";
     }
     a.add(gpa);
     a.add(grade);
     return a;
   }
+
   @override
   void initState() {
     user = widget.user;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,8 +62,12 @@ class _SemFourResult extends State<SemFourResult> {
           appBar: AppBar(
             leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResultList(user: user,)))),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultList(
+                              user: user,
+                            )))),
             backgroundColor: Colors.white,
             title: Text(
               'Semester Four',

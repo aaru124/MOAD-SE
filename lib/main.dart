@@ -6,8 +6,6 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
 
-  
-
   // open a box
   var box = await Hive.openBox('mybox');
   runApp(MyApp());

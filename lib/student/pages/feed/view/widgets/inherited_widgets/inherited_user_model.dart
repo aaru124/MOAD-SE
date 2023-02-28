@@ -5,10 +5,13 @@ class InheritedUserModel extends InheritedWidget {
   final String userData;
   final Widget child;
 
-InheritedUserModel({super.key,  required this.userData,required this.child,})
-      : super(child: child);
-  
-static InheritedUserModel? maybeOf(BuildContext context) {
+  InheritedUserModel({
+    super.key,
+    required this.userData,
+    required this.child,
+  }) : super(child: child);
+
+  static InheritedUserModel? maybeOf(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<InheritedUserModel>();
   }
 
@@ -17,6 +20,7 @@ static InheritedUserModel? maybeOf(BuildContext context) {
     assert(result != null, 'No FrogColor found in context');
     return result!;
   }
+
   @override
   bool updateShouldNotify(InheritedUserModel oldWidget) {
     return true;

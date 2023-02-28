@@ -3,8 +3,8 @@ import 'package:flutter_application_1/student/pages/results/result_list.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SemSixResult extends StatefulWidget {
-final String user;
-SemSixResult({required this.user});
+  final String user;
+  SemSixResult({required this.user});
   @override
   _SemSixResult createState() => _SemSixResult();
 }
@@ -12,58 +12,50 @@ SemSixResult({required this.user});
 class _SemSixResult extends State<SemSixResult> {
   late String user;
 
-  List calc_gpa(int total_marks){
-    List a=[];
-    int gpa=0;
-    String grade="";
-    if (total_marks>=80){
-      gpa=10;
-      if(total_marks>=90){
-        grade="OS";
+  List calc_gpa(int total_marks) {
+    List a = [];
+    int gpa = 0;
+    String grade = "";
+    if (total_marks >= 80) {
+      gpa = 10;
+      if (total_marks >= 90) {
+        grade = "OS";
+      } else {
+        grade = "AA";
       }
-      else{
-        grade="AA";
-      }
-    }
-    else if (total_marks>=70){
-      gpa=9;
-      grade="AB";
-    }
-    else if (total_marks>=60){
-      gpa=8;
-      grade="BB";
-    }
-    else if (total_marks>=55){
-      gpa=7;
-      grade="BC";
-    }
-    else if (total_marks>=50){
-      gpa=6;
-      grade="CC";
-
-    }
-    else if (total_marks>=45){
-      gpa=5;
-      grade="CD";
-    }
-    else if (total_marks>=40){
-      gpa=4;
-      grade="DD";
-    }
-    else{
-      gpa=0;
-      grade="FF";
+    } else if (total_marks >= 70) {
+      gpa = 9;
+      grade = "AB";
+    } else if (total_marks >= 60) {
+      gpa = 8;
+      grade = "BB";
+    } else if (total_marks >= 55) {
+      gpa = 7;
+      grade = "BC";
+    } else if (total_marks >= 50) {
+      gpa = 6;
+      grade = "CC";
+    } else if (total_marks >= 45) {
+      gpa = 5;
+      grade = "CD";
+    } else if (total_marks >= 40) {
+      gpa = 4;
+      grade = "DD";
+    } else {
+      gpa = 0;
+      grade = "FF";
     }
     a.add(gpa);
     a.add(grade);
     return a;
   }
+
   @override
   void initState() {
     user = widget.user;
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -72,8 +64,12 @@ class _SemSixResult extends State<SemSixResult> {
           appBar: AppBar(
             leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResultList(user: user,)))),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultList(
+                              user: user,
+                            )))),
             backgroundColor: Colors.white,
             title: Text(
               'Semester Six',
@@ -162,11 +158,10 @@ class _SemSixResult extends State<SemSixResult> {
                       label: Text('Grade',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold))),
-                   DataColumn(
+                  DataColumn(
                       label: Text('Grade Point',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold))),
-                              
                 ],
                 rows: [
                   DataRow(cells: [
@@ -216,7 +211,10 @@ class _SemSixResult extends State<SemSixResult> {
                     DataCell(Text('')),
                     DataCell(Text('')),
                     DataCell(Text('')),
-                    DataCell(Text('SGPA',style: TextStyle(fontWeight: FontWeight.bold),)),
+                    DataCell(Text(
+                      'SGPA',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
                     DataCell(Text('10')),
                   ]),
                 ],

@@ -5,10 +5,11 @@ import 'package:flutter_application_1/student/pages/placement/placement_main.dar
 
 class PlacementManager extends StatelessWidget {
   final String user;
-  const PlacementManager({super.key,required this.user});
+  const PlacementManager({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: PlacementMain(user:user));
+    return MaterialApp(
+        debugShowCheckedModeBanner: false, home: PlacementMain(user: user));
   }
 }

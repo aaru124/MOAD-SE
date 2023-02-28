@@ -19,13 +19,11 @@ class _NavState extends State<Nav> {
     super.initState();
   }
 
-
-
   int _selectedIndex = 0;
   late List<Widget> _widgetOptions = <Widget>[
-    Dashboard(user:user),
-    Feed(user:user),
-    PopUp(user:user),
+    Dashboard(user: user),
+    Feed(user: user),
+    PopUp(user: user),
   ];
 
   void _onItemTap(int index) {

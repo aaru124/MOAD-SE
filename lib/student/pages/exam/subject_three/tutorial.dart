@@ -5,8 +5,8 @@ import 'package:flutter_application_1/student/pages/exam/subject_one/practice_qu
 import 'package:flutter_application_1/student/pages/exam/subject_three/practice_quiz_screen.dart';
 
 class OnbordingThree extends StatefulWidget {
-final String user;
-OnbordingThree({required this.user});
+  final String user;
+  OnbordingThree({required this.user});
   @override
   _OnbordingState createState() => _OnbordingState();
 }
@@ -19,7 +19,7 @@ class _OnbordingState extends State<OnbordingThree> {
 
   @override
   void initState() {
-    user=widget.user;
+    user = widget.user;
     _controller = PageController(initialPage: 0);
     super.initState();
   }
@@ -34,14 +34,18 @@ class _OnbordingState extends State<OnbordingThree> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-                 onPressed: () => Navigator.push(
-                   context, MaterialPageRoute(builder: (context) => ExamMain(user: user,)),)
-          
-        ),
-        backgroundColor: Colors.white,),
-      body:Column(
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ExamMain(
+                            user: user,
+                          )),
+                )),
+        backgroundColor: Colors.white,
+      ),
+      body: Column(
         children: [
           Expanded(
             child: PageView.builder(
@@ -55,13 +59,15 @@ class _OnbordingState extends State<OnbordingThree> {
               itemBuilder: (_, i) {
                 return Padding(
                   padding: const EdgeInsets.all(40),
-                  child:Column(
+                  child: Column(
                     children: [
                       Image.asset(
                         contents[i].image,
                         height: 100,
                       ),
-                      SizedBox(height: 80,),
+                      SizedBox(
+                        height: 80,
+                      ),
                       Text(
                         contents[i].title,
                         style: TextStyle(
@@ -74,7 +80,6 @@ class _OnbordingState extends State<OnbordingThree> {
                       Text(
                         contents[i].description,
                         textAlign: TextAlign.left,
-                        
                         style: TextStyle(
                           fontSize: 15,
                           color: Color.fromARGB(255, 31, 29, 29),
@@ -82,7 +87,6 @@ class _OnbordingState extends State<OnbordingThree> {
                       )
                     ],
                   ),
-                  
                 );
               },
             ),
@@ -121,7 +125,6 @@ class _OnbordingState extends State<OnbordingThree> {
           )
         ],
       ),
-      
     );
   }
 

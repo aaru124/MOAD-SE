@@ -35,19 +35,15 @@ class _LoginPageState extends State<LoginPage> {
         messagingSenderId: "971794730001",
         projectId: "moad-se",
         authDomain: "moad-se.firebaseapp.com",
-        
       ),
     );
 
     User? user = FirebaseAuth.instance.currentUser;
-    
-
 
     if (user != null) {
-      
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => StudentMainScreen(user:user.uid),
+          builder: (context) => StudentMainScreen(user: user.uid),
         ),
       );
     }
@@ -73,24 +69,23 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                margin: EdgeInsets.only(top: 50),
-                child: Image.asset(
-                  "assets/logo.png",
-                  height: 90,
-                  width: 90,
-                ),
-              ),
-
+                      margin: EdgeInsets.only(top: 50),
+                      child: Image.asset(
+                        "assets/logo1.png",
+                        height: 90,
+                        width: 90,
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 24.0),
                       child: Text(
                         'Login',
                         style: GoogleFonts.josefinSans(
-                            textStyle: const TextStyle(
-                              color: Color(0xff164276),
-                              fontWeight: FontWeight.w900,
-                              fontSize: 34,
-                            ),
+                          textStyle: const TextStyle(
+                            color: Color(0xff164276),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 34,
+                          ),
                         ),
                       ),
                     ),
@@ -151,7 +146,8 @@ class _LoginPageState extends State<LoginPage> {
                                               _isProcessing = true;
                                             });
 
-                                            User? user = await FireAuth.signInUsingEmailPassword(
+                                            User? user = await FireAuth
+                                                .signInUsingEmailPassword(
                                               email: _emailTextController.text,
                                               password:
                                                   _passwordTextController.text,
@@ -164,7 +160,10 @@ class _LoginPageState extends State<LoginPage> {
                                             if (user != null) {
                                               Navigator.of(context)
                                                   .pushReplacement(
-                                                MaterialPageRoute(builder: (context) => StudentMainScreen(user:user.uid),
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      StudentMainScreen(
+                                                          user: user.uid),
                                                 ),
                                               );
                                             }
@@ -176,7 +175,6 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                       ),
                                     ),
-                                    
                                   ],
                                 ),
                         ],

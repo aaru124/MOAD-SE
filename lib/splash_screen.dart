@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/login_page.dart';
 
-import 'package:flutter_application_1/login_screen.dart';
-
 void main() {
   runApp(SplashScreen());
 }
@@ -43,7 +41,8 @@ class StartState extends State<SplashScreen> {
         children: [
           Center(
             child: Container(
-              child: Image.asset("assets/logo.png"),
+              height: 300,
+              child: Image.asset("assets/logo1.png"),
             ),
           )
         ],

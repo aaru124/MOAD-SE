@@ -22,9 +22,8 @@ class Home extends StatelessWidget {
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.push(
-                   context, MaterialPageRoute(builder: (context) => HomePage(user:user))),
-          
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomePage(user: user))),
         ),
       ),
       body: Container(
@@ -44,9 +43,7 @@ class Home extends StatelessWidget {
                 height: 50.0,
                 margin: EdgeInsets.only(right: 18.0),
                 child: Row(
-                  children: <Widget>[
-                    
-                  ],
+                  children: <Widget>[],
                 ),
               ),
               SizedBox(height: 35.0),

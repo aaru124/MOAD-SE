@@ -8,6 +8,10 @@ class PracticeExam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: ExamMain(user: user,));
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: ExamMain(
+          user: user,
+        ));
   }
 }

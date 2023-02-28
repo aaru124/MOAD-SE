@@ -32,7 +32,9 @@ List<Question> getQuestions() {
       Answer("Planning, Risk Analysis, Engineering, Customer Evaluation", true),
       Answer("MicroDefining, Prototyping, Testing, Deliverysoft", false),
       Answer("Requirements", false),
-      Answer("Quick Design, Build Prototype, Evaluate Prototype, Refine Prototype", false),
+      Answer(
+          "Quick Design, Build Prototype, Evaluate Prototype, Refine Prototype",
+          false),
     ],
   ));
 
@@ -49,10 +51,12 @@ List<Question> getQuestions() {
   list.add(Question(
     "In a software project, COCOMO (Constructive Cost Model) is used to",
     [
-      Answer("estimate effort and duration based on the size of the software", true),
+      Answer("estimate effort and duration based on the size of the software",
+          true),
       Answer("size and duration based on the effort of the software", false),
       Answer("effort and cost based on the duration of the software", false),
-      Answer("size, effort and duration based on the cost of the software", false),
+      Answer(
+          "size, effort and duration based on the cost of the software", false),
     ],
   ));
 

@@ -4,15 +4,15 @@ class ToDo {
   String? id;
   String todoText;
   bool isDone;
-  final prefs =  SharedPreferences.getInstance();
+  final prefs = SharedPreferences.getInstance();
 
   ToDo({
     required this.id,
     required this.todoText,
     this.isDone = false,
   });
-   
-   ToDo.fromJson(Map<String, dynamic> json)
+
+  ToDo.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         todoText = json['todoText'],
         isDone = json['isDone'];
@@ -23,7 +23,6 @@ class ToDo {
         'isDone': isDone,
       };
 
-  
   static List<ToDo> todoList() {
     return [
       ToDo(id: '01', todoText: 'Morning Exercise', isDone: true),

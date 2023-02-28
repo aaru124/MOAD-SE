@@ -7,6 +7,7 @@ import 'package:flutter_application_1/student/pages/feed/view/widgets/post_time_
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('feed-post');
+
 class PostPageKeys {
   static final ValueKey wholePage = ValueKey("wholePage");
   static final ValueKey bannerImage = ValueKey("bannerImage");
@@ -37,50 +38,50 @@ class PostPage extends StatelessWidget {
 }
 
 class _NonImageContents extends StatelessWidget {
-
-const _NonImageContents({super.key});
+  const _NonImageContents({super.key});
   @override
   Widget build(BuildContext context) {
     final String postData = InheritedPostModel.of(context).postData;
-    CollectionReference users = FirebaseFirestore.instance.collection('feed-post');
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('feed-post');
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(postData).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        future: users.doc(postData).get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text("Something went wrong");
+          }
 
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return Text("Document does not exist");
+          }
 
-        if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Container(
-      margin: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _Summary(key: PostPageKeys.summary),
-          PostTimeStamp(),
-          SizedBox(height: 40.0,),
-          _MainBody(key: PostPageKeys.mainBody),
-          /*UserDetailsWithFollow(
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data =
+                snapshot.data!.data() as Map<String, dynamic>;
+            return Container(
+              margin: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _Summary(key: PostPageKeys.summary),
+                  PostTimeStamp(),
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  _MainBody(key: PostPageKeys.mainBody),
+                  /*UserDetailsWithFollow(
             userData: data['author'],
           ),*/
-          SizedBox(height: 8.0),
-          //PostStats(),
-          //CommentsList(),
-        ],
-      ),
-    );
-        }
-        return Text("Loading");
+                  SizedBox(height: 8.0),
+                  //PostStats(),
+                  //CommentsList(),
+                ],
+              ),
+            );
           }
-    );
-    
+          return Text("Loading");
+        });
   }
 }
 
@@ -104,32 +105,30 @@ class _Summary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(InheritedPostModel.of(context).postData).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Text(
-        data['summary'],
-        style: TextThemes.title,
-      ),
-    );
-        }
-        return Text("loading");
+        future: users.doc(InheritedPostModel.of(context).postData).get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text("Something went wrong");
           }
-    );
-    
+
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return Text("Document does not exist");
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data =
+                snapshot.data!.data() as Map<String, dynamic>;
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                data['summary'],
+                style: TextThemes.title,
+              ),
+            );
+          }
+          return Text("loading");
+        });
   }
 }
 
@@ -139,31 +138,29 @@ class _MainBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future: users.doc(InheritedPostModel.of(context).postData).get(),
-      builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-
-        if (snapshot.hasError) {
-          return Text("Something went wrong");
-        }
-
-        if (snapshot.hasData && !snapshot.data!.exists) {
-          return Text("Document does not exist");
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-          return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Text(
-        data['body'],
-        style: TextThemes.body1,
-      ),
-    );
-        }
-        return Text("loading");
+        future: users.doc(InheritedPostModel.of(context).postData).get(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text("Something went wrong");
           }
-    );
-    
+
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return Text("Document does not exist");
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data =
+                snapshot.data!.data() as Map<String, dynamic>;
+            return Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                data['body'],
+                style: TextThemes.body1,
+              ),
+            );
+          }
+          return Text("loading");
+        });
   }
 }

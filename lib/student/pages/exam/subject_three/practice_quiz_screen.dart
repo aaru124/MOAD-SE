@@ -16,7 +16,6 @@ class _QuizScreenThreeState extends State<QuizScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Container(
         decoration: BoxDecoration(
           gradient: const LinearGradient(
@@ -28,7 +27,6 @@ class _QuizScreenThreeState extends State<QuizScreenThree> {
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          
           _questionWidget(),
           _answerList(),
           _nextButton(),

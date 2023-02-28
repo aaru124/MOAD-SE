@@ -14,7 +14,8 @@ class _FaQState extends State<FaQ> {
         child: ListView(
           children: <Widget>[
             ExpansionTile(
-              title: Text("\n\nWhat is the purpose of College Management system?\n\n"),
+              title: Text(
+                  "\n\nWhat is the purpose of College Management system?\n\n"),
               children: <Widget>[
                 Padding(
                     padding: EdgeInsets.only(left: 16, right: 16),
@@ -23,7 +24,8 @@ class _FaQState extends State<FaQ> {
               ],
             ),
             ExpansionTile(
-              title: Text("\n\nHow does the attendance tracking feature work?\n\n"),
+              title: Text(
+                  "\n\nHow does the attendance tracking feature work?\n\n"),
               children: <Widget>[
                 Padding(
                     padding: EdgeInsets.only(left: 16, right: 16),
@@ -32,7 +34,8 @@ class _FaQState extends State<FaQ> {
               ],
             ),
             ExpansionTile(
-              title: Text("\n\nWhat are the advantages of using a college management system?\n\n"),
+              title: Text(
+                  "\n\nWhat are the advantages of using a college management system?\n\n"),
               children: <Widget>[
                 Padding(
                     padding: EdgeInsets.only(left: 16, right: 16),
