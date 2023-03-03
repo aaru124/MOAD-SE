@@ -221,7 +221,7 @@ class _SemSixResult extends State<ResultYear> {
                                     margin:
                                         EdgeInsets.only(top: 20, bottom: 50),
                                     child: Text(
-                                      "St Xaviers College",
+                                      "St Xavier's College",
                                       style: GoogleFonts.josefinSans(
                                         textStyle: const TextStyle(
                                           color: Color(0xff164276),

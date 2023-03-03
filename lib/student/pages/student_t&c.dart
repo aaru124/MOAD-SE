@@ -10,7 +10,7 @@ class _TandCState extends State<TandC> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.grey),
+      //appBar: AppBar(backgroundColor: Colors.grey),
       body: Container(
         padding: EdgeInsets.all(25),
         child: SingleChildScrollView(

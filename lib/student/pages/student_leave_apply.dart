@@ -17,9 +17,7 @@ class Leave extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-        ),
+        
         body: const MyCustomForm(),
       ),
     );

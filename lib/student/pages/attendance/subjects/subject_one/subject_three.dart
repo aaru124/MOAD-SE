@@ -74,17 +74,20 @@ class _SubjectOneState extends State<SubjectThree> {
     setState(() {
       _counterattend = (prefs1.getInt('${user}counterattend3') ?? 0);
       _counterabsent = (prefs2.getInt('${user}counterabsent3') ?? 0);
+      missed = (prefs2.getInt('${user}missed3') ?? 0);
       _countertotal = (prefs3.getDouble('${user}countertotal3') ?? 0);
     });
   }
 
-  void calculateMissing() {
+  void calculateMissing() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     int calc =
         (((75 * (_counterabsent + _counterattend)) - (100 * (_counterattend))) /
                 25)
             .ceil();
     setState(() {
       missed = calc;
+      prefs.setInt('${user}missed3', missed);
     });
   }
 
@@ -241,8 +244,9 @@ class _SubjectOneState extends State<SubjectThree> {
                         style: TextStyle(color: a),
                       ),
                       Text(
-                        '${_countertotal.toStringAsFixed(2)}',
-                        style: TextStyle(color: a, fontSize: 30),
+                        (_counterabsent==0 && _counterattend==0) ? "Classes have not been added":"${(missed <= 0)?"Your attendance is on track":"$missed classes to attend"}",
+                        
+                        style: TextStyle(color: a, fontSize: 20),
                       ),
                     ])))
               ]),

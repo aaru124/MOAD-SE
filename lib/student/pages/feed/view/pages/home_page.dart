@@ -8,11 +8,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(""),
-      ),
+      backgroundColor: Color.fromARGB(255, 231, 230, 230),
+      
       body: ListView.builder(
         itemCount: DemoValues.posts.length,
         itemBuilder: (BuildContext context, int index) {

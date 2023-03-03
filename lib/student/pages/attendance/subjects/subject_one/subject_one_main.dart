@@ -18,7 +18,8 @@ class _SubjectOneState extends State<SubjectOne> {
   int _counterattend = 0;
   int _counterabsent = 0;
   double _countertotal = 0;
-  var missed = 0;
+  int _missed=0;
+  
   Color a = Colors.black;
 
   void _totalCounter() async {
@@ -71,20 +72,25 @@ class _SubjectOneState extends State<SubjectOne> {
     SharedPreferences prefs1 = await SharedPreferences.getInstance();
     SharedPreferences prefs2 = await SharedPreferences.getInstance();
     SharedPreferences prefs3 = await SharedPreferences.getInstance();
+    SharedPreferences prefs4 = await SharedPreferences.getInstance();
     setState(() {
       _counterattend = (prefs1.getInt('${user}counterattend') ?? 0);
       _counterabsent = (prefs2.getInt('${user}counterabsent') ?? 0);
       _countertotal = (prefs3.getDouble('${user}countertotal') ?? 0);
+      _missed = (prefs3.getInt('${user}missed') ?? 0);
     });
   }
 
-  void calculateMissing() {
+  void calculateMissing() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     int calc =
         (((75 * (_counterabsent + _counterattend)) - (100 * (_counterattend))) /
                 25)
             .ceil();
     setState(() {
-      missed = calc;
+      _missed = calc;
+      prefs.setInt('${user}missed', _missed);
+      
     });
   }
 
@@ -142,25 +148,33 @@ class _SubjectOneState extends State<SubjectOne> {
                         onPressed: () {
                           _totalCounter();
                           calculateMissing();
-                          if (missed <= 0) {
+                          if(_counterattend==0 && _counterabsent==0){
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Correct Value hasn\'t been entered for calculating percentage')),
+                            );
+                          }
+                          else if (_missed <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
                                       'You have reached your goal! Keep attending lectures to maintain it.')),
                             );
-                          } else if (missed == 1) {
+                          } else if (_missed == 1) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
-                                      'You need to attend $missed more class to reach your goal.')),
+                                      'You need to attend $_missed more class to reach your goal.')),
                             );
-                          } else if (missed > 1) {
+                          } else if (_missed > 1) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
-                                      'You need to attend $missed more classes to reach your goal')),
+                                      'You need to attend $_missed more classes to reach your goal')),
                             );
                           }
+                          
                         },
                         child: Text('Update'),
                       ),
@@ -241,8 +255,9 @@ class _SubjectOneState extends State<SubjectOne> {
                         style: TextStyle(color: a),
                       ),
                       Text(
-                        '${_countertotal.toStringAsFixed(2)}',
-                        style: TextStyle(color: a, fontSize: 30),
+                        (_counterabsent==0 && _counterattend==0) ? "Classes have not been added":"${(_missed <= 0)?"Your attendance is on track":"$_missed classes to attend"}",
+                        
+                        style: TextStyle(color: a, fontSize: 20),
                       ),
                     ])))
               ]),

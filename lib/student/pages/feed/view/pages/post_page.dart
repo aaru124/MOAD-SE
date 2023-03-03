@@ -5,6 +5,7 @@ import 'package:flutter_application_1/student/pages/feed/view/widgets/inherited_
 import 'package:flutter_application_1/student/pages/feed/view/widgets/post_time_stamp.dart';
 //import 'package:flutter_application_1/student/pages/feed/view/widgets/user_details_with_follow.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_1/student/pages/feed/view/pages/home_page.dart';
 
 CollectionReference users = FirebaseFirestore.instance.collection('feed-post');
 
@@ -22,12 +23,23 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("")),
+      
       body: InheritedPostModel(
         postData: postData,
         child: ListView(
           key: PostPageKeys.wholePage,
           children: <Widget>[
+            GestureDetector(  
+              onTap: (){
+                Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) {
+          return HomePage();
+        }));
+              },          
+              child: Container(padding:EdgeInsets.fromLTRB(25, 20, 0, 0),
+              child: Text("Go Back",style: TextStyle(decoration: TextDecoration.underline,fontSize: 10,color: Colors.black))))
+              ,
+
             //_BannerImage(key: PostPageKeys.bannerImage),
             _NonImageContents(),
           ],

@@ -25,6 +25,7 @@ class _TimeTableState extends State<TimeTable> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
@@ -43,12 +44,17 @@ class _TimeTableState extends State<TimeTable> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               )),
+                    
+          SizedBox(height: 25,),
           Expanded(
             child: GetUserName(DateFormat('EEEE').format(date), 'class-1'),
           ),
+          SizedBox(height: 25,),
           Expanded(
             child: GetUserName(DateFormat('EEEE').format(date), 'class-2'),
           ),
+                    SizedBox(height: 25,),
+
           Expanded(
             child: GetUserName(DateFormat('EEEE').format(date), 'class-3'),
           ),

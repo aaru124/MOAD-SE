@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
           menuItem(3, "Train Concession", Icons.event,
               currentPage == DrawerSections.train ? true : false),
           Divider(),
-          menuItem(4, "Terms & Condition", Icons.notes,
+          menuItem(4, "Terms & Conditions", Icons.notes,
               currentPage == DrawerSections.term ? true : false),
           menuItem(5, "FAQs", Icons.question_answer,
               currentPage == DrawerSections.faq ? true : false),

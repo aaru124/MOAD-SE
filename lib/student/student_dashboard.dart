@@ -142,6 +142,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   child: ListView(
                     children: [
+                      SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
