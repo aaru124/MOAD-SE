@@ -53,7 +53,7 @@ class _MyWidgetState extends State<Movie> {
         Map<String, dynamic> data = _data[i].data() as Map<String, dynamic>;
         Movie a = Movie(
           title: "${data['title']}",
-          imageUrl: "${data['img']}",
+          imageUrl: "assets/${data['img']}",
           year: "${data['year']}",
           ecc: data['ecc'],
           button: data['disabled'],

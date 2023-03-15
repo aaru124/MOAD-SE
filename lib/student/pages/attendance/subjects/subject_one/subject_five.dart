@@ -79,7 +79,7 @@ class _SubjectOneState extends State<SubjectFive> {
     });
   }
 
-   void calculateMissing() async {
+  void calculateMissing() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int calc =
         (((75 * (_counterabsent + _counterattend)) - (100 * (_counterattend))) /
@@ -145,7 +145,15 @@ class _SubjectOneState extends State<SubjectFive> {
                         onPressed: () {
                           _totalCounter();
                           calculateMissing();
-                          if (missed <= 0) {
+                          if (_counterattend == 0 && _counterabsent == 0) {
+                            
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Correct Value hasn\'t been entered for calculating percentage')),
+                            );
+                          }
+                          else if (missed <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
@@ -243,9 +251,10 @@ class _SubjectOneState extends State<SubjectFive> {
                         'Status',
                         style: TextStyle(color: a),
                       ),
-                       Text(
-                        (_counterabsent==0 && _counterattend==0) ? "Classes have not been added":"${(missed <= 0)?"Your attendance is on track":"$missed classes to attend"}",
-                        
+                      Text(
+                        (_counterabsent == 0 && _counterattend == 0)
+                            ? "Classes have not been added"
+                            : "${(missed <= 0) ? "Your attendance is on track" : "$missed classes to attend"}",
                         style: TextStyle(color: a, fontSize: 20),
                       ),
                     ])))

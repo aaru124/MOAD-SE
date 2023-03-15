@@ -17,7 +17,6 @@ class Leave extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey),
       home: Scaffold(
-        
         body: const MyCustomForm(),
       ),
     );
@@ -42,8 +41,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   //
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
-  CollectionReference students =
-      FirebaseFirestore.instance.collection('leave-application');
+  
 
   @override
   void initState() {
@@ -51,9 +49,12 @@ class MyCustomFormState extends State<MyCustomForm> {
     l_till.text = ""; //set the initial value of text field
     super.initState();
   }
+  CollectionReference students =
+      FirebaseFirestore.instance.collection('leave-application');
 
   Future<void> addApp(String fullName, String uid, String? yr, String? course,
       String email, String l_from, String l_till, String? img) {
+        
     // Calling the collection to add a new user
     return students
         //adding to firebase collection
@@ -469,6 +470,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                 onPressed: () {
                   // Validate returns true if the form is valid, or false otherwise.
                   if (_formKey.currentState!.validate()) {
+                    print(image?.name);
                     addApp(name.text, uid.text, chosenValue, chosenValue1,
                         email.text, l_from.text, l_till.text, image?.path);
                     _formKey.currentState?.reset();

@@ -10,14 +10,14 @@ import '../widgets/todo_item.dart';
 class Home extends StatefulWidget {
   final String user;
   List<ToDo> todosList;
-  Home({Key? key, required this.user, required this.todosList}) : super(key: key);
+  Home({Key? key, required this.user, required this.todosList})
+      : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  
   /*List<ToDo> todoList() {
     return [
       ToDo(id: '01', todoText: 'Morning Exercise', isDone: true),
@@ -35,8 +35,6 @@ class _HomeState extends State<Home> {
       ),
     ];*/
 
-  
-
   late String user;
   late List<ToDo> todosList;
   List<ToDo> _foundToDo = [];
@@ -45,17 +43,16 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     user = widget.user;
-    todosList=widget.todosList;
+    todosList = widget.todosList;
     _foundToDo = todosList;
-    
+
     super.initState();
   }
-  
-  
+
   @override
   Widget build(BuildContext context) {
     Future<DocumentSnapshot<Map<String, dynamic>>> user_list =
-      FirebaseFirestore.instance.collection('users').doc(user).get();
+        FirebaseFirestore.instance.collection('users').doc(user).get();
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user).get(),
@@ -64,209 +61,202 @@ class _HomeState extends State<Home> {
           if (snapshot.hasError) {
             return Text("snapshot has error");
           }
-            if (snapshot.hasData && !snapshot.data!.exists) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: Scaffold(
-                  body: Center(
+          if (snapshot.hasData && !snapshot.data!.exists) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/oops.png",
+                        height: 150,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "You have not appeared in this exam yet!",
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
+          if (snapshot.connectionState == ConnectionState.done) {
+            Map<String, dynamic> data =
+                snapshot.data!.data() as Map<String, dynamic>;
+
+            return Scaffold(
+              backgroundColor: tdBGColor,
+              appBar: _buildAppBar(),
+              body: Stack(
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 15,
+                    ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          "assets/oops.png",
-                          height: 150,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "You have not appeared in this exam yet!",
-                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                        //searchBox(),
+                        Expanded(
+                          child: ListView(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                  top: 50,
+                                  bottom: 20,
+                                ),
+                                child: Text(
+                                  'Task Manager',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              for (ToDo todoo in _foundToDo.reversed)
+                                ToDoItem(
+                                  todo: todoo,
+                                  onToDoChanged: _handleToDoChange,
+                                  onDeleteItem: _deleteToDoItem,
+                                ),
+                            ],
+                          ),
                         )
                       ],
                     ),
                   ),
-                ),
-              );
-            }
-
-            if (snapshot.connectionState == ConnectionState.done) {
-              Map<String, dynamic> data =
-                  snapshot.data!.data() as Map<String, dynamic>;
-              
-             
-              return Scaffold(
-                backgroundColor: tdBGColor,
-                appBar: _buildAppBar(),
-                body: Stack(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                      child: Column(
-                        children: [
-                          //searchBox(),
-                          Expanded(
-                            child: ListView(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    top: 50,
-                                    bottom: 20,
-                                  ),
-                                  child: Text(
-                                    'Task Manager',
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                for (ToDo todoo in _foundToDo.reversed)
-                                
-                                  ToDoItem(
-                                    todo: todoo,
-                                    onToDoChanged: _handleToDoChange,
-                                    onDeleteItem: _deleteToDoItem,
-                                  ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Row(children: [
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              bottom: 20,
-                              right: 20,
-                              left: 20,
-                            ),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 0.0,
-                                ),
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: TextField(
-                              controller: _todoController,
-                              decoration: InputDecoration(
-                                  hintText: 'Add a new todo item',
-                                  border: InputBorder.none),
-                            ),
-                          ),
-                        ),
-                        Container(
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Row(children: [
+                      Expanded(
+                        child: Container(
                           margin: EdgeInsets.only(
                             bottom: 20,
                             right: 20,
+                            left: 20,
                           ),
-                          child: ElevatedButton(
-                            child: Text(
-                              '+',
-                              style: TextStyle(
-                                fontSize: 40,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 10.0,
+                                spreadRadius: 0.0,
                               ),
-                            ),
-                            onPressed: () {
-                              _addToDoItem(_todoController.text);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: tdBlue,
-                              minimumSize: Size(60, 60),
-                              elevation: 10,
-                            ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: TextField(
+                            controller: _todoController,
+                            decoration: InputDecoration(
+                                hintText: 'Add a new todo item',
+                                border: InputBorder.none),
                           ),
                         ),
-                      ]),
-                    ),
-                  ],
-                ),
-              );
-            
-            
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          bottom: 20,
+                          right: 20,
+                        ),
+                        child: ElevatedButton(
+                          child: Text(
+                            '+',
+                            style: TextStyle(
+                              fontSize: 40,
+                            ),
+                          ),
+                          onPressed: () {
+                            _addToDoItem(_todoController.text);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: tdBlue,
+                            minimumSize: Size(60, 60),
+                            elevation: 10,
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ],
+              ),
+            );
           }
           return Text("");
-  });
+        });
   }
 
-  
-   Future<void> update( Map<String, dynamic> data) {
+  Future<void> update(Map<String, dynamic> data) {
     // Calling the collection to add a new user
-    return FirebaseFirestore.instance.collection('users').doc(user)
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(user)
         //adding to firebase collection
         .update(data)
         .then((value) => print(""))
         .catchError((error) => print("Event couldn't be added."));
   }
- 
 
-  void _handleToDoChange(ToDo todo) async{
-    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+  void _handleToDoChange(ToDo todo) async {
+    final event_list =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data = event_list.data()!;
-    data["task"]["task-${todo.id}"]["isDone"]=!todo.isDone;
-    final event_list1 = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    data["task"]["task-${todo.id}"]["isDone"] = !todo.isDone;
+    final event_list1 =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data1 = event_list.data()!;
     update(data);
-    setState(()  {
-      
-      todo.isDone=data["task"]["task-${todo.id}"]['isDone'];
-      
+    setState(() {
+      todo.isDone = data["task"]["task-${todo.id}"]['isDone'];
     });
-      //makeTask(data);
-      
-    
+    //makeTask(data);
   }
 
-  void _deleteToDoItem(String id,ToDo todo) async{
-    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+  void _deleteToDoItem(String id, ToDo todo) async {
+    final event_list =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data = event_list.data()!;
-    final a=data["task"];
+    final a = data["task"];
     a.remove("task-${todo.id}");
     update(data);
-    
+
     setState(() {
-      
-      todosList.removeWhere((item) => item.id==todo.id);
-      
+      todosList.removeWhere((item) => item.id == todo.id);
+
       //makeTask(data);
-      
-      
     });
   }
 
-  void _addToDoItem(String toDo) async{
-    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+  void _addToDoItem(String toDo) async {
+    final event_list =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data = event_list.data()!;
-    final a=data["task"];
-    int len=_foundToDo.length;
-    a["task-${len+1}"]={"text":toDo,"isDone":false,"id":"${len+1}"};
+    final a = data["task"];
+    int len = _foundToDo.length;
+    a["task-${len + 1}"] = {"text": toDo, "isDone": false, "id": "${len + 1}"};
     update(data);
-    final event_list1 = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final event_list1 =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data1 = event_list.data()!;
     setState(() {
-      
       todosList.add(ToDo(
-        id: "${_foundToDo.length+1}",
+        id: "${_foundToDo.length + 1}",
         todoText: toDo,
       ));
     });
-    
+
     _todoController.clear();
   }
 

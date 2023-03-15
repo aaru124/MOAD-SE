@@ -48,6 +48,7 @@ dependencies:
   flutter_pdfview:
   path_provider_linux:
   flutter_swiper: ^1.1.6
+  flutter_admin_scaffold: ^1.1.2
   
 
 dev_dependencies:

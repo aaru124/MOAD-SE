@@ -14,7 +14,6 @@ class TrainConcession extends StatelessWidget {
       title: appTitle,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        
         body: const MyCustomForm(),
       ),
     );

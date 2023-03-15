@@ -1,52 +1,65 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/fee.dart';
-import 'package:flutter_application_1/student/pages/past_papers/main.dart';
-import 'package:flutter_application_1/student/pages/past_papers/past_paper_main.dart';
-import 'package:flutter_application_1/student/pages/results/result_list.dart';
-import 'package:flutter_application_1/student/pages/student_attendance_manager.dart';
-import 'package:flutter_application_1/student/pages/ecc.dart';
-
-///import 'package:flutter_application_1/student/pages/feed/data/placement/placement_main.dart';
-import 'package:flutter_application_1/student/pages/student_practice_exam.dart';
-import 'package:flutter_application_1/student/pages/student_placement.dart';
+import 'package:flutter_application_1/admin/pages/ecc_add.dart';
+import 'package:flutter_application_1/admin/pages/feed_add.dart';
+import 'package:flutter_application_1/admin/pages/feedback.dart';
+import 'package:flutter_application_1/admin/pages/leave_application.dart';
+import 'package:flutter_application_1/admin/pages/student_add.dart';
+import 'package:flutter_application_1/admin/pages/time_table_add.dart';
+import 'package:flutter_application_1/admin/pages/train_concession.dart';
+import 'package:flutter_application_1/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PopUp extends StatefulWidget {
-  final String user;
-  PopUp({required this.user});
+
+class AdminDashboard extends StatefulWidget {
   @override
-  _PopUpState createState() => new _PopUpState();
+  _AdminDashboardState createState() => new _AdminDashboardState();
 }
 
-class _PopUpState extends State<PopUp> {
-  late String user;
-  @override
-  void initState() {
-    user = widget.user;
-    super.initState();
-  }
+class _AdminDashboardState extends State<AdminDashboard> {
+    final FirebaseAuth auth = FirebaseAuth.instance;
 
+  signOut() async {
+    await auth.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("ADMIN PAGE",style: TextStyle(color: Colors.white,fontSize: 25),),backgroundColor: Colors.black,),
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Column(
+  
         children: <Widget>[
+          GestureDetector(
+            onTap: signOut,
+            child:Container(child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+          Icon(Icons.logout,size: 13,),
+          Text("Logout",style: TextStyle(color: Colors.black,fontSize: 13,decoration: TextDecoration.underline),),
+
+          ],) ,
+          alignment: Alignment.topRight,) ,
+          ),
+          
           SizedBox(
-            height: 40,
+            height: 100,
           ),
           Flexible(
             child: GridView.count(
               childAspectRatio: 1.0,
               padding: EdgeInsets.only(left: 16, right: 16),
               crossAxisCount: 2,
-              crossAxisSpacing: 18,
-              mainAxisSpacing: 18,
+              crossAxisSpacing: 25,
+              mainAxisSpacing: 25,
               children: [
                 
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xff453658),
+                      color: Color.fromARGB(255, 3, 3, 3),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -60,15 +73,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      PracticeExam(user: user)));
+                                  builder: (context) => StudentAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Practice Exam",
+                        "Add Student",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -83,7 +95,7 @@ class _PopUpState extends State<PopUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xff453658),
+                      color: Color.fromARGB(255, 3, 3, 3),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -97,14 +109,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Fee(user: user)));
+                                  builder: (context) => FeedAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Fee",
+                        "Add Feed",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -119,7 +131,7 @@ class _PopUpState extends State<PopUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xff453658),
+                      color: Color.fromARGB(255, 3, 3, 3),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -133,15 +145,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultList(user: user)));
+                                  builder: (context) => ECCAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Result",
+                        "Update ECC",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -156,7 +167,7 @@ class _PopUpState extends State<PopUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xff453658),
+                      color: Color.fromARGB(255, 3, 3, 3),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -170,15 +181,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      PlacementManager(user: user)));
+                                  builder: (context) => TimeTableAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Placement",
+                        "Add TimeTable",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -191,81 +201,7 @@ class _PopUpState extends State<PopUp> {
                     ],
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xff453658),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Image.asset(
-                          "assets/calendar.png",
-                          width: 60,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      Ecc_Tracker(user: user)));
-                        },
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        "ECC",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xff453658),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Image.asset(
-                          "assets/calendar.png",
-                          width: 60,
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PastPaperMain(
-                                        user: user,
-                                      )));
-                        },
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        "Past Papers",
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                    ],
-                  ),
-                ),
+                
               ],
             ),
           ),

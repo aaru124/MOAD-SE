@@ -157,6 +157,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: container,
       drawer: Drawer(
+        width: 300,
         child: SingleChildScrollView(
           child: Container(
             child: Column(
@@ -241,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 7,
                 child: Text(
                   title,
                   style: TextStyle(

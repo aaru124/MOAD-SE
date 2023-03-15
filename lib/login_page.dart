@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter_application_1/admin/admin_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -36,16 +37,28 @@ class _LoginPageState extends State<LoginPage> {
         projectId: "moad-se",
         authDomain: "moad-se.firebaseapp.com",
       ),
+      
     );
 
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      Navigator.of(context).pushReplacement(
+      print(user.uid);
+      if (user.uid == "duQ1DdNfCeZjB63qWrxmPw2srM63") {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => AdminDashboard(),
+          ),
+        );
+      }
+      else{
+        Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => StudentMainScreen(user: user.uid),
         ),
       );
+      }
+      
     }
 
     return firebaseApp;
@@ -72,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                       margin: EdgeInsets.only(top: 50),
                       child: Image.asset(
                         "assets/logo1.png",
-                        height: 90,
+                        height: 190,
                         width: 90,
                       ),
                     ),
@@ -84,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                           textStyle: const TextStyle(
                             color: Color(0xff164276),
                             fontWeight: FontWeight.w900,
-                            fontSize: 34,
+                            fontSize: 40,
                           ),
                         ),
                       ),
@@ -158,14 +171,23 @@ class _LoginPageState extends State<LoginPage> {
                                             });
 
                                             if (user != null) {
-                                              Navigator.of(context)
-                                                  .pushReplacement(
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      StudentMainScreen(
-                                                          user: user.uid),
-                                                ),
-                                              );
+                                              if (user.uid ==
+                                                  "duQ1DdNfCeZjB63qWrxmPw2srM63") {
+                                                Navigator.of(context)
+                                                    .pushReplacement(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AdminDashboard(),
+                                                  ),
+                                                );
+                                              }
+                                             else{
+        Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => StudentMainScreen(user: user.uid),
+        ),
+      );
+      }
                                             }
                                           }
                                         },

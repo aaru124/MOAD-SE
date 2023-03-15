@@ -17,7 +17,7 @@ class TextThemes {
   );
 
   static final TextStyle dateStyle = TextStyle(
-    fontSize: 10,
+    fontSize: 13,
     fontWeight: FontWeight.w500,
     color: Colors.green[900],
   );

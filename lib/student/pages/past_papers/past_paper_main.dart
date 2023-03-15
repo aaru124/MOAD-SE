@@ -54,7 +54,7 @@ class PastPaper extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Image.asset(
                 imageList[index],
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             );
           },

@@ -23,22 +23,25 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: InheritedPostModel(
         postData: postData,
         child: ListView(
           key: PostPageKeys.wholePage,
           children: <Widget>[
-            GestureDetector(  
-              onTap: (){
-                Navigator.push(context,
-            MaterialPageRoute(builder: (BuildContext context) {
-          return HomePage();
-        }));
-              },          
-              child: Container(padding:EdgeInsets.fromLTRB(25, 20, 0, 0),
-              child: Text("Go Back",style: TextStyle(decoration: TextDecoration.underline,fontSize: 10,color: Colors.black))))
-              ,
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return HomePage();
+                  }));
+                },
+                child: Container(
+                    padding: EdgeInsets.fromLTRB(25, 20, 0, 0),
+                    child: Text("Go Back",
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontSize: 10,
+                            color: Colors.black)))),
 
             //_BannerImage(key: PostPageKeys.bannerImage),
             _NonImageContents(),

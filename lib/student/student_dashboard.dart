@@ -24,18 +24,35 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     user = widget.user;
     super.initState();
+    getLength();
   }
+
   //List<ToDo> todosList=[];
   DateTime date = DateTime.now();
-    List<Widget> a=[];
-
+  List<Widget> a = [];
+  var len;
   //final todosList = ToDo.todoList();
   List<ToDo> _foundToDo = [];
-  void makeList(Map<String, dynamic> data){
-    for(int i=1;i<=data['task'].length;i++){
-      var b=buildTaskItem(data['task'].length, ToDo(id: "${data['task']['task-$i']['id']}", todoText: "${data['task']['task-$i']['text']}", isDone: data['task']['task-$i']['isDone']), Colors.green);
+  void makeList(Map<String, dynamic> data) {
+    for (int i = 1; i <= data['task'].length; i++) {
+      var b = buildTaskItem(
+          data['task'].length,
+          ToDo(
+              id: "${data['task']['task-$i']['id']}",
+              todoText: "${data['task']['task-$i']['text']}",
+              isDone: data['task']['task-$i']['isDone']),
+          Colors.green);
       a.add(b);
     }
+  }
+  void getLength() async{
+   final day_list =
+        await FirebaseFirestore.instance.collection('timetable').doc(DateFormat('EEEE').format(date)).get();
+    final data = day_list.data()!;
+    setState(() {
+       len=data.length;
+    });
+    
   }
   @override
   Widget build(BuildContext context) {
@@ -85,7 +102,7 @@ class _DashboardState extends State<Dashboard> {
                             border: Border.all(width: 1, color: Colors.white),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("${data['img']}"),
+                              image: AssetImage("assets/images/${data['img']}"),
                             ),
                           ),
                         ),
@@ -142,7 +159,9 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   child: ListView(
                     children: [
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -155,7 +174,7 @@ class _DashboardState extends State<Dashboard> {
                                     fontWeight: FontWeight.bold),
                                 children: [
                                   TextSpan(
-                                    text: "(${data.length})",
+                                    text: "($len)",
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
@@ -260,30 +279,37 @@ class _DashboardState extends State<Dashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
           Row(
             children: [
               Container(
                 height: 6,
                 width: 6,
-                decoration: (courseTitle.isDone)?BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(3),
-                ):BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(3),
-                ),
+                decoration: (courseTitle.isDone)
+                    ? BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.circular(3),
+                      )
+                    : BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(3),
+                      ),
               ),
               SizedBox(
                 width: 5,
               ),
-              (courseTitle.isDone)?Text(
-            "Completed",
-            style: TextStyle(fontSize: 10, color: Colors.grey),
-          ):Text("Not completed",style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 49, 3, 3)),),
-          SizedBox(
-            height: 5,
-          ),
+              (courseTitle.isDone)
+                  ? Text(
+                      "Completed",
+                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                    )
+                  : Text(
+                      "Not completed",
+                      style: TextStyle(
+                          fontSize: 10, color: Color.fromARGB(255, 49, 3, 3)),
+                    ),
+              SizedBox(
+                height: 5,
+              ),
             ],
           ),
           SizedBox(

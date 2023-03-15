@@ -7,13 +7,13 @@ import 'screens/home.dart';
 
 class TaskMain extends StatelessWidget {
   final String user;
-  
+
   TaskMain({super.key, required this.user});
-  List<ToDo> todoslist=[];
-  
-  
+  List<ToDo> todoslist = [];
+
   void makeTask() async {
-    final event_list = await FirebaseFirestore.instance.collection('users').doc(user).get();
+    final event_list =
+        await FirebaseFirestore.instance.collection('users').doc(user).get();
     final data = event_list.data()!;
     print(data["task"].length);
     for (int i = 0; i < data['task'].length; i++) {
@@ -24,7 +24,7 @@ class TaskMain extends StatelessWidget {
       todoslist.add(a);
     }
   }
-  
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class TaskMain extends StatelessWidget {
       title: 'ToDo App',
       home: Home(
         user: user,
-        todosList:todoslist,
+        todosList: todoslist,
       ),
     );
   }

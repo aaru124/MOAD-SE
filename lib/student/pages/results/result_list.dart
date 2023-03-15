@@ -3,7 +3,6 @@ import 'package:flutter_application_1/student/pages/results/result_year.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../student_main.dart';
 
-
 class ResultList extends StatefulWidget {
   final String user;
   ResultList({required this.user});

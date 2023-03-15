@@ -18,8 +18,8 @@ class _SubjectOneState extends State<SubjectOne> {
   int _counterattend = 0;
   int _counterabsent = 0;
   double _countertotal = 0;
-  int _missed=0;
-  
+  int _missed = 0;
+
   Color a = Colors.black;
 
   void _totalCounter() async {
@@ -81,7 +81,7 @@ class _SubjectOneState extends State<SubjectOne> {
     });
   }
 
-  void calculateMissing() async{
+  void calculateMissing() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int calc =
         (((75 * (_counterabsent + _counterattend)) - (100 * (_counterattend))) /
@@ -90,7 +90,6 @@ class _SubjectOneState extends State<SubjectOne> {
     setState(() {
       _missed = calc;
       prefs.setInt('${user}missed', _missed);
-      
     });
   }
 
@@ -148,14 +147,15 @@ class _SubjectOneState extends State<SubjectOne> {
                         onPressed: () {
                           _totalCounter();
                           calculateMissing();
-                          if(_counterattend==0 && _counterabsent==0){
+                          
+                          if (_counterattend == 0 && _counterabsent == 0) {
+                            print("hello in 1");
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
                                       'Correct Value hasn\'t been entered for calculating percentage')),
                             );
-                          }
-                          else if (_missed <= 0) {
+                          } else if (_missed <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
@@ -174,7 +174,6 @@ class _SubjectOneState extends State<SubjectOne> {
                                       'You need to attend $_missed more classes to reach your goal')),
                             );
                           }
-                          
                         },
                         child: Text('Update'),
                       ),
@@ -255,8 +254,9 @@ class _SubjectOneState extends State<SubjectOne> {
                         style: TextStyle(color: a),
                       ),
                       Text(
-                        (_counterabsent==0 && _counterattend==0) ? "Classes have not been added":"${(_missed <= 0)?"Your attendance is on track":"$_missed classes to attend"}",
-                        
+                        (_counterabsent == 0 && _counterattend == 0)
+                            ? "Classes have not been added"
+                            : "${(_missed <= 0) ? "Your attendance is on track" : "$_missed classes to attend"}",
                         style: TextStyle(color: a, fontSize: 20),
                       ),
                     ])))

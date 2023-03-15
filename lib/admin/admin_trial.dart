@@ -1,36 +1,139 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/student/pages/fee.dart';
-import 'package:flutter_application_1/student/pages/past_papers/main.dart';
-import 'package:flutter_application_1/student/pages/past_papers/past_paper_main.dart';
-import 'package:flutter_application_1/student/pages/results/result_list.dart';
-import 'package:flutter_application_1/student/pages/student_attendance_manager.dart';
-import 'package:flutter_application_1/student/pages/ecc.dart';
-
-///import 'package:flutter_application_1/student/pages/feed/data/placement/placement_main.dart';
-import 'package:flutter_application_1/student/pages/student_practice_exam.dart';
-import 'package:flutter_application_1/student/pages/student_placement.dart';
+import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:flutter_application_1/admin/pages/ecc_add.dart';
+import 'package:flutter_application_1/admin/pages/feed_add.dart';
+import 'package:flutter_application_1/admin/pages/feedback.dart';
+import 'package:flutter_application_1/admin/pages/leave_application.dart';
+import 'package:flutter_application_1/admin/pages/student_add.dart';
+import 'package:flutter_application_1/admin/pages/time_table_add.dart';
+import 'package:flutter_application_1/admin/pages/train_concession.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PopUp extends StatefulWidget {
-  final String user;
-  PopUp({required this.user});
-  @override
-  _PopUpState createState() => new _PopUpState();
+void main() {
+  runApp(MyApp());
 }
 
-class _PopUpState extends State<PopUp> {
-  late String user;
+class MyApp extends StatefulWidget {
   @override
-  void initState() {
-    user = widget.user;
-    super.initState();
-  }
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  static const MaterialColor themeBlack = MaterialColor(
+    _themeBlackPrimaryValue,
+    <int, Color>{
+      50: Color(_themeBlackPrimaryValue),
+      100: Color(_themeBlackPrimaryValue),
+      200: Color(_themeBlackPrimaryValue),
+      300: Color(_themeBlackPrimaryValue),
+      400: Color(_themeBlackPrimaryValue),
+      500: Color(_themeBlackPrimaryValue),
+      600: Color(_themeBlackPrimaryValue),
+      700: Color(_themeBlackPrimaryValue),
+      800: Color(_themeBlackPrimaryValue),
+      900: Color(_themeBlackPrimaryValue),
+    },
+  );
+  static const int _themeBlackPrimaryValue = 0xFF222222;
+  static const Color themeTextPrimary = Color(0xFF9D9D9D);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sample',
+      theme: ThemeData(
+        primarySwatch: themeBlack,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: themeBlack,
+            ),
+        primaryTextTheme: Theme.of(context).textTheme.apply(
+              bodyColor: themeTextPrimary,
+            ),
+        primaryIconTheme: IconThemeData(
+          color: themeTextPrimary,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+     
+    );
+  }
+
+  
+}
+
+class MyScaffold extends StatelessWidget {
+  const MyScaffold({
+    Key? key,
+    required this.route,
+    required this.body,
+  }) : super(key: key);
+
+  final Widget body;
+  final String route;
+
+  final List<AdminMenuItem> _sideBarItems = const [
+    AdminMenuItem(
+      title: 'Dashboard',
+      route: '/',
+      icon: Icons.dashboard,
+    ),
+    AdminMenuItem(
+      title: 'Top Level',
+      icon: Icons.file_copy,
+      children: [
+        AdminMenuItem(
+          title: 'Second Level Item 1',
+          route: '/secondLevelItem1',
+        ),
+        AdminMenuItem(
+          title: 'Second Level Item 2',
+          route: '/secondLevelItem2',
+        ),
+        AdminMenuItem(
+          title: 'Third Level',
+          children: [
+            AdminMenuItem(
+              title: 'Third Level Item 1',
+              route: '/thirdLevelItem1',
+            ),
+            AdminMenuItem(
+              title: 'Third Level Item 2',
+              route: '/thirdLevelItem2',
+              icon: Icons.image,
+            ),
+          ],
+        ),
+      ],
+    ),
+  ];
+
+  final List<AdminMenuItem> _adminMenuItems = const [
+    AdminMenuItem(
+      title: 'User Profile',
+      icon: Icons.account_circle,
+      route: '/',
+    ),
+    AdminMenuItem(
+      title: 'Settings',
+      icon: Icons.settings,
+      route: '/',
+    ),
+    AdminMenuItem(
+      title: 'Logout',
+      icon: Icons.logout,
+      route: '/',
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return AdminScaffold(
+      backgroundColor: Colors.white,
+    
+      
+      body: SingleChildScrollView(
+       child:Column(
         children: <Widget>[
           SizedBox(
             height: 40,
@@ -43,7 +146,6 @@ class _PopUpState extends State<PopUp> {
               crossAxisSpacing: 18,
               mainAxisSpacing: 18,
               children: [
-                
                 Container(
                   decoration: BoxDecoration(
                       color: Color(0xff453658),
@@ -60,15 +162,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      PracticeExam(user: user)));
+                                  builder: (context) => StudentAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Practice Exam",
+                        "Add Student",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -97,14 +198,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Fee(user: user)));
+                                  builder: (context) => FeedAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Fee",
+                        "Add Feed",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -133,15 +234,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      ResultList(user: user)));
+                                  builder: (context) => ECCAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Result",
+                        "Update ECC",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -170,15 +270,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      PlacementManager(user: user)));
+                                  builder: (context) => TimeTableAdd()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Placement",
+                        "Add TimeTable",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -208,14 +307,50 @@ class _PopUpState extends State<PopUp> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      Ecc_Tracker(user: user)));
+                                      LeaveApplicationList()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "ECC",
+                        "Leave",
+                        style: GoogleFonts.openSans(
+                            textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600)),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xff453658),
+                      borderRadius: BorderRadius.circular(10)),
+                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Image.asset(
+                          "assets/calendar.png",
+                          width: 60,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => TrainApplication()));
+                        },
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "Train",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -244,16 +379,14 @@ class _PopUpState extends State<PopUp> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PastPaperMain(
-                                        user: user,
-                                      )));
+                                  builder: (context) => FeedbackDetailList()));
                         },
                       ),
                       SizedBox(
                         height: 14,
                       ),
                       Text(
-                        "Past Papers",
+                        "FeedBack Details",
                         style: GoogleFonts.openSans(
                             textStyle: TextStyle(
                                 color: Colors.white,
@@ -270,6 +403,7 @@ class _PopUpState extends State<PopUp> {
             ),
           ),
         ],
+      ),
       ),
     );
   }

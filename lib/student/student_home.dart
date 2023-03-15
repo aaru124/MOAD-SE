@@ -39,6 +39,7 @@ class _NavState extends State<Nav> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 10,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(

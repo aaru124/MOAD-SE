@@ -145,7 +145,15 @@ class _SubjectOneState extends State<SubjectThree> {
                         onPressed: () {
                           _totalCounter();
                           calculateMissing();
-                          if (missed <= 0) {
+                          if (_counterattend == 0 && _counterabsent == 0) {
+                            
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Correct Value hasn\'t been entered for calculating percentage')),
+                            );
+                          }
+                          else if (missed <= 0) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
@@ -244,8 +252,9 @@ class _SubjectOneState extends State<SubjectThree> {
                         style: TextStyle(color: a),
                       ),
                       Text(
-                        (_counterabsent==0 && _counterattend==0) ? "Classes have not been added":"${(missed <= 0)?"Your attendance is on track":"$missed classes to attend"}",
-                        
+                        (_counterabsent == 0 && _counterattend == 0)
+                            ? "Classes have not been added"
+                            : "${(missed <= 0) ? "Your attendance is on track" : "$missed classes to attend"}",
                         style: TextStyle(color: a, fontSize: 20),
                       ),
                     ])))
